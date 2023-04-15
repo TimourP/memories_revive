@@ -1,6 +1,38 @@
 
 
 #home-hero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     padding: 60px 0;
+
+    .title-container {
+        position: relative;
+
+        h1 {
+            font-weight: bold;
+            font-size: 3.5rem;
+            line-height: 1.05;
+            max-width: 550px;
+            text-transform: uppercase;
+        }
+
+        .absolute-frame {
+            position: absolute;
+            font-weight: bold;
+            font-size: 8rem;
+            top: -5rem;
+            z-index: -1;
+            left: -20px;
+            color: #F9F9F9;
+            text-transform: uppercase;
+        }
+        
+        p {
+            max-width: 400px;
+            margin: 20px 0;
+        }
+    }
 }

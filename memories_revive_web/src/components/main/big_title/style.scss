@@ -1,0 +1,25 @@
+
+
+.big-title {
+    margin-bottom: 20px;
+
+    h2 {
+        font-weight: bold;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        color: var(--secondary_text);
+        font-size: 1rem;
+    }
+
+    .divider {
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary);
+    }
+}

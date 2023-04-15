@@ -1,0 +1,38 @@
+
+
+#home-text-image-section {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 40% 40%;
+    grid-gap: 60px;
+    position: relative;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 80%;
+        height: 90%;
+        position: absolute;
+        background-color: var(--main_grey);
+        z-index: -1;
+        bottom: -30px;
+        right: 0;
+    }
+
+    .image-container {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+
+    .text-container {
+
+        .main-text {
+            p {
+                margin-bottom: 20px;
+                font-size: 1rem;
+            }
+        }
+    }
+}
