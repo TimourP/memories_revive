@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+html {
+	--background: #fff;
+	--surface: #fff;
+	--text: #222222;
+	--strong_text: #000;
+	--secondary_text: #566573;
+	--on_surface: #000;
+	--primary: #5DADE2;
+	--primary_transparent: rgba(93, 173, 226, 0.2);
+	--error: #F1948A;
+	--warning: #F7DC6F;
+	--success: #82E0AA;
+	--on_primary: #fff;
+	--border_radius: 6px;
+	--divider: #D5DBDB;
+	--divider_light: #D5DBDB;
+	--deactivate: #D5DBDB;
+	--box_shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--light_theme_box_shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	--graph_background_default: #fff;
+	--light_shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	--scroll_bar: #BFDEFF;
+	--footer_background: #2C394B;
+	--footer_text: #fff;
+	--lateral_nav_background: rgba(255, 255, 255, 0.8);
+	--modal_background: rgba(0, 0, 0, 0.4);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', 'Arial', Times, serif;
+	color: var(--text);
+}
+
+body {
+	width: 100%;
+	background-color: var(--background);
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background: transparent;
+	position: fixed;
+	height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--scroll_bar);
+	border-radius: 3px;
 }

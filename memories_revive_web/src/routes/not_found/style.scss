@@ -1,0 +1,16 @@
+
+
+#page-not-found {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+
+    span {
+        font-size: 3rem;
+        font-weight: bold;
+        
+    }
+}
