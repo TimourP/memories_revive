@@ -1,5 +1,71 @@
 
 
 #commitment-section {
-    
+    .commitment-row {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-gap: 0;
+        position: relative;
+
+        .commitment-column {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            
+            &.text {
+                width: 100%;
+
+                .text-center {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    height: 100%;
+                }
+
+                p {
+                    margin-bottom: 10px;
+                    max-width: calc(100% - 40px);
+
+                    strong {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                &.right {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    justify-content: center;
+                }
+            }
+
+            &.image {
+                position: relative;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    background-color: var(--main_grey);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    top: 40px;
+                    right: 40%;
+                }
+
+                &.right {
+                    &::before {
+                        right: unset;
+                        left: 40%;
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
 }
