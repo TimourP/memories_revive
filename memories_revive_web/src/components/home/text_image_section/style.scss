@@ -2,10 +2,10 @@
 
 #home-text-image-section {
     display: grid;
-    width: 100%;
     grid-template-columns: 40% 40%;
     grid-gap: 60px;
     position: relative;
+    margin-bottom: 20vh;
 
     &::before {
         content: "";
