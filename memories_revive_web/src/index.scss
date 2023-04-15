@@ -7,7 +7,8 @@ html {
 	--strong_text: #000;
 	--secondary_text: #566573;
 	--on_surface: #000;
-	--primary: #5DADE2;
+	--main_grey: #F2F2F2;
+	--primary: #E2AA76;
 	--primary_transparent: rgba(93, 173, 226, 0.2);
 	--error: #F1948A;
 	--warning: #F7DC6F;
@@ -52,4 +53,45 @@ body {
 ::-webkit-scrollbar-thumb {
 	background: var(--scroll_bar);
 	border-radius: 3px;
+}
+
+section {
+	max-width: 1400px;
+}
+
+.main-button {
+	display: block;
+	text-transform: uppercase;
+	position: relative;
+	padding: 15px 0 15px 10px;
+	text-decoration: none;
+	width: fit-content;
+
+	&::before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: calc(100% - 20px);
+		height: calc(100% - 10px);
+		top: 10px;
+		left: 0;
+		background-color: var(--main_grey);
+		z-index: -1;
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		height: 2px;
+		width: 50%;
+		background-color: var(--primary);
+		transform: translateY(4px);
+		transition: .3s;
+	}
+
+	&:hover {
+		&::after {
+			width: calc(100% - 40px);
+		}
+	}
 }
