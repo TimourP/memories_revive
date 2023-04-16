@@ -18,8 +18,8 @@ const Home = () => {
       <TextImageSection/>
       <ProductSection/>
       <OfferSection/>
-      <CommitmentSection/>
-      <TestimoniesSection/>
+      {/* <CommitmentSection/> */}
+      {/* <TestimoniesSection/> */}
     </div>
   )
 }

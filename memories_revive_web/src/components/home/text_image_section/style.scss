@@ -6,6 +6,7 @@
     grid-gap: 60px;
     position: relative;
     margin-bottom: 20vh;
+    padding-top: 20vh;
 
     &::before {
         content: "";
@@ -34,5 +35,14 @@
                 font-size: 1rem;
             }
         }
+    }
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 45% 45%;
+        grid-gap: 30px;
+    }
+
+    @media screen and (max-width: 1040px) {
+        grid-template-columns: 100%;
     }
 }

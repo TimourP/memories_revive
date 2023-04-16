@@ -11,6 +11,31 @@
         margin-top: 50px;
         
         > * + * { margin-left: 50px;}
+
+        @media screen and (max-width: 1000px){
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+            > * + * { margin-left: unset;}
+
+            > :nth-child(odd) {
+                margin-right: 20px;
+            }
+
+            > :first-child {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1000px){
+            > :nth-child(odd) {
+                margin-right: unset;
+            }
+
+            > * {
+                margin-bottom: 40px;
+            }
+        }
     }
 }
 

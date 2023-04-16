@@ -21,6 +21,14 @@
         }
     }
 
+    @media screen and (max-width: 1120px){
+
+        &.home {
+            --frame_width: 388px;
+            --frame_height: 194px;
+        }
+    }
+
     width: fit-content;
 
     .frame-header {
