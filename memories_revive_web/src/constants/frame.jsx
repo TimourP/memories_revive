@@ -4,7 +4,7 @@ import white_marble from '../assets/frame/marbre-blanc.jpg'
 export const style_selector = [
     {
         title: "Clair",
-        color: "#fff",
+        color: "#F2F2F2",
     },
     {
         title: "Sombre",
@@ -19,7 +19,7 @@ export const frame_selector = [
     },
     {
         title: "Acien anthracite",
-        color: "#373737",
+        color: "#292929",
     },
     {
         title: "Marbre blanc",

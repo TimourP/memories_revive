@@ -8,7 +8,7 @@ export const CustomisationProvider = (props) => {
 	const [frame, setFrame] = useState({
         model: "",
 		style: 0,
-		frame: 0,
+		frame: 3,
     })
 
 	const set_frame = (edit) => {

@@ -2,30 +2,32 @@ import React, { useContext } from 'react'
 import "./style.scss"
 import black_marble from "../../../assets/frame/marbre-noir.jpg"
 import CustomisationContext from '../../../contexts/CustomisationContext'
-import { frame_selector } from '../../../constants/frame'
+import { frame_selector, style_selector } from '../../../constants/frame'
 
 const Frame = () => {
+    const {frame} = useContext(CustomisationContext);
+
     return (
-        <div className='frame'>
+        <div className='frame' style={{backgroundColor: style_selector[frame.style].color}}>
 
         </div>
     )
 }
 
-const Render = () => {
+const Render = ({is_home}) => {
     const {frame, set_frame} = useContext(CustomisationContext);
 
     return (
-        <div id="render-frame">
+        <div id="render-frame" className={`${is_home ? "home" : ""}`}>
             <div className='frame-header'>
                 <div className='pointer-container'>
                     <div className='pointer'>
                         <span className='title'>Cadre</span>
-                        <span className='choice'>Marbre noir</span>
+                        <span className='choice'>{frame_selector[frame.frame].title}</span>
                     </div>
                     <div className='pointer style'>
                         <span className='title'>Style</span>
-                        <span className='choice'>Clair</span>
+                        <span className='choice'>{style_selector[frame.style].title}</span>
                     </div>
                 </div>
             </div>
