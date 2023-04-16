@@ -5,6 +5,7 @@ import TextImageSection from '../../components/home/text_image_section/TextImage
 import OfferSection from '../../components/home/offer_section/OfferSection'
 import CommitmentSection from '../../components/home/commitment_section/CommitmentSection'
 import ProductSection from '../../components/home/product_section/ProductSection'
+import TestimoniesSection from '../../components/home/testimonies_section/TestimoniesSection'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <ProductSection/>
       <OfferSection/>
       <CommitmentSection/>
+      <TestimoniesSection/>
     </div>
   )
 }

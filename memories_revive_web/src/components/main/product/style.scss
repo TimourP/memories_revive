@@ -10,4 +10,68 @@
         height: auto;
         object-fit: cover;
     }
+
+    .product-text {
+        padding: 20px;
+        padding-top: 40px;
+        position: relative;
+
+        .price {
+            position: absolute;
+            background-color: var(--primary);
+            top: -5px;
+            padding: 4px 8px;
+            font-weight: bold;
+        }
+
+        .title {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .description {
+            display: block;
+            font-size: 1rem;
+            margin: 20px 0;
+        }
+    }
+
+    .add-basket-btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        cursor: pointer;
+        width: fit-content;
+        margin-bottom: 10px;
+
+        img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        span {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: calc(100% - 30px);
+            height: 100%;
+            transform: translateY(10px);
+            z-index: -1;
+            background-color: var(--main_grey);
+            transition: .3s;
+        }
+
+        &:hover {
+            &::before {
+                width: calc(100% + 10px);
+            }
+        }
+    }
 }

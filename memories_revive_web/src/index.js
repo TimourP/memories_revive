@@ -9,6 +9,7 @@ import ErrorPage from './routes/error_page/ErrorPage';
 import ProductsList from './routes/products_list/ProductsList';
 import Home from './routes/home/Home';
 import NotFound from './routes/not_found/NotFound';
+import Frames from './routes/frames/Frames';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductsList />,
+      },
+      {
+        path: "frames",
+        element: <Frames />,
       },
       {
         path: "",
