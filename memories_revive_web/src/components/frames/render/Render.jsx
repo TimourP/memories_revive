@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./style.scss"
 import black_marble from "../../../assets/frame/marbre-noir.jpg"
+import CustomisationContext from '../../../contexts/CustomisationContext'
+import { frame_selector } from '../../../constants/frame'
 
 const Frame = () => {
     return (
@@ -11,6 +13,8 @@ const Frame = () => {
 }
 
 const Render = () => {
+    const {frame, set_frame} = useContext(CustomisationContext);
+
     return (
         <div id="render-frame">
             <div className='frame-header'>
@@ -26,9 +30,13 @@ const Render = () => {
                 </div>
             </div>
             <div className='frame-content'>
-                <img className='background' src={black_marble} />
+                {
+                    frame_selector[frame.frame].color ? 
+                    <div className='background' style={{backgroundColor: frame_selector[frame.frame].color}}></div>
+                    :
+                    <img className='background' src={frame_selector[frame.frame].image} />
+                }
                 <div className='frame-container'>
-                    
                     <Frame/>
                 </div>
             </div>

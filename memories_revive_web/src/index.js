@@ -10,6 +10,7 @@ import ProductsList from './routes/products_list/ProductsList';
 import Home from './routes/home/Home';
 import NotFound from './routes/not_found/NotFound';
 import Frames from './routes/frames/Frames';
+import { useScroll } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
     ],
+    scrollTop: true
   },
   {
     path: "*",

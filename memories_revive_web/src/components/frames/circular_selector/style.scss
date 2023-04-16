@@ -1,0 +1,91 @@
+
+
+.circular-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 40px;
+
+    .subtitle {
+        color: var(--secondary_text);
+        font-style: italic;
+        font-size: .9rem;
+        margin-bottom: 5px;
+    }
+
+    .selector-container {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        .show-selected {
+            position: absolute;
+            bottom: -35px;
+            transition: .3s;
+            background-color: var(--background);
+            box-shadow: var(--box_shadow);
+            padding: 4px 8px;
+            transform: translateX(-50%);
+
+            span {
+                white-space: nowrap;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                left: 50%;
+                top: -9px;
+                transform: translateX(-50%);
+                width: 0; 
+                height: 0; 
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid var(--background);
+            }
+
+            &.hidden {
+                opacity: 0;
+            }
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        &::before {
+            content: "";
+            width: 160px;
+            height: 100%;
+            position: absolute;
+            background-color: var(--main_grey);
+            z-index: -1;
+            top: 40%;
+        }
+
+        .selector {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            span,
+            img {
+                width: 16px;
+                height: 16px;
+                display: block;
+                margin-left: 5px;
+                border: 1px solid var(--dark_grey);
+                border-radius: 8px;
+                cursor: pointer;
+
+                &.selected {
+                    border-color: var(--primary);
+                }
+            }
+        }
+    }
+}

@@ -85,9 +85,11 @@
     .frame-content {
         position: relative;
         padding: var(--border_width);
+        box-shadow: var(--box_shadow);
 
         .background {
             position: absolute;
+            display: block;
             top: 0;
             left: 0;
             width: calc(var(--frame_width) + var(--border_width) * 2);
