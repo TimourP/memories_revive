@@ -37,8 +37,9 @@
                     background-color: var(--divider);
                 }
 
-                a {
+                a, div {
                     text-decoration: none;
+                    cursor: pointer;
                 }
             }
         }

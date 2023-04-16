@@ -1,0 +1,104 @@
+
+
+#render-frame {
+    --frame_width: calc(50vw - 60px);
+    --frame_height: calc(25vw - 30px);
+    --border_width: 8px;
+
+    @media screen and (min-width: 1520px){
+        --frame_width: 760px;
+        --frame_height: 380px;
+    }
+
+    width: fit-content;
+
+    .frame-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 40px;
+        padding-bottom: 20px;
+
+        .pointer-container > * + * { margin-left: 40px;}
+
+        .pointer-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+
+            .pointer {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+    
+                .title {
+                    font-weight: bold;
+                    font-size: 1rem;
+                }
+        
+                .choice {
+                    color: var(--secondary_text);
+                }
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    background-color: #9D9D9D;
+                    display: block;
+                    width: 1px;
+                    z-index: 10;
+                    height: 20px;
+                }
+    
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    background-color: #9D9D9D;
+                    display: block;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 4px;
+                    z-index: 10;
+                    transform: translateX(-3px) translateY(50%);
+                }
+
+                &.style {
+                    &::after {
+                        height: 50px;
+                        bottom: -55px;
+                    }
+        
+                    &::before {
+                        bottom: -55px;
+                    }
+                }
+            }
+            }
+    }
+
+    .frame-content {
+        position: relative;
+        padding: var(--border_width);
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(var(--frame_width) + var(--border_width) * 2);
+            height: calc(var(--frame_height) + var(--border_width) * 2);
+            z-index: -1;
+        }
+    
+        .frame {
+            width: var(--frame_width);
+            height: var(--frame_height);
+            background-color: var(--main_grey);
+        }
+    }
+}

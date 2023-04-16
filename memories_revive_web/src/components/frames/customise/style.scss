@@ -1,0 +1,39 @@
+
+#customise-frame {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .render-container {
+        width: calc(60vw - 60px);
+
+        p {
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        .renders {
+            position: relative;
+            margin-top: 40px;
+
+            &::before {
+                content: "";
+                display: block;
+                width: 60vw;
+                height: 70%;
+                top: -20px;
+                right: 0;
+                z-index: -1;
+                position: absolute;
+                background-color: var(--main_grey);
+            }
+        }
+    }
+
+    .action-container {
+        display: flex;
+        flex-direction: column;
+        width: calc(40vw - 60px);
+        padding-left: 40px;
+    }
+}

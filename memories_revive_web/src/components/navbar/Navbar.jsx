@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./style.scss"
 import { Link } from 'react-router-dom'
 import icon from "../../assets/icon.png"
 import shop_bag from "../../assets/nav/shop-bag.svg"
+import AuthContext from '../../contexts/AuthContext'
 
 const Navbar = () => {
+  const {setNeedLog, user, logout} = useContext(AuthContext);
+
   return (
     <header id='main-header'>
         <nav className='main-nav'>
@@ -29,7 +32,7 @@ const Navbar = () => {
             </ul>
             <ul className='log-container'>
               <li>
-                <Link to="/shop">Connexion</Link>
+                <div onClick={() => {setNeedLog(true)}}>Connexion</div>
               </li>
               <li className='divider'></li>
               <li>

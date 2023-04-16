@@ -10,7 +10,7 @@ import stripe from "../../../assets/home/stripe-icon.svg"
 
 const OfferSection = () => {
   return (
-    <div className='section-container'>
+    <div className='section-container home'>
         <section id="home-offer-section">
             <BigTitle title={"Nous vous offrons la<br/>meilleure expérience"} subtitle={"Garanties"} />
             <div className='offers-container'>
