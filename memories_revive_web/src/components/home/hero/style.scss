@@ -138,12 +138,15 @@
                 }
     
                 .title {
-                    font-weight: bold;
+                    font-weight: 600;
                     font-size: 1rem;
+                    font-style: italic;
                 }
         
                 .choice {
                     color: var(--secondary_text);
+                    font-weight: 300;
+                    font-style: italic;
                 }
             }
 
@@ -154,7 +157,7 @@
             .product-headlines {
                 display: flex;
                 flex-direction: row;
-                width: 100%;
+                width: 95%;
                 padding-right: 80px;
                 align-items: flex-start;
                 justify-content: space-between;
@@ -182,12 +185,16 @@
 
                         .description {
                             white-space: nowrap;
+                            font-size: 0.8rem;
+                            font-weight: 300;
+                            margin-top: 5px;
                         }
                     }
                 }
     
                 p {
-                    max-width: 500px;
+                    max-width: 325px;
+                    font-size: 0.8rem;
                 }
             }
         }

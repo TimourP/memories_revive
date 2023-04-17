@@ -56,10 +56,13 @@
                 .title {
                     font-weight: bold;
                     font-size: 1rem;
+                    font-style: italic;
                 }
         
                 .choice {
                     color: var(--secondary_text);
+                    font-weight: 300;
+                    font-style: italic;
                 }
     
                 &::after {

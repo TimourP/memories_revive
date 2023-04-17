@@ -34,7 +34,7 @@ const Hero = () => {
         <div className='title-container'>
             <h1>L'art automobile encadré</h1>
             <span className='absolute-frame'>cadres</span>
-            <p>Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. </p>
+            <p className='light-p'>Morem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. </p>
             <Link to="frames" className='main-button'>
                 Créer son cadre
             </Link>
@@ -72,7 +72,7 @@ const Hero = () => {
                   <span className='description'>Puissance</span>
                 </div>
               </div>
-              <p className='description main-car-desc'>La Porsche 911 Turbo 2022 est la définition même de la beauté brute, avec son design intemporel et sa technologie de pointe.</p>
+              <p className='description main-car-desc light-p'>La Porsche 911 Turbo 2022 est la définition même de la beauté brute, avec son design intemporel et sa technologie de pointe.</p>
             </div>
           </div>
         </div>
