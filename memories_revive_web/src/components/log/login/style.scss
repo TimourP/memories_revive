@@ -73,7 +73,7 @@
 
             .form-content {
                 width: 100%;
-                padding: 0 20px;
+                padding: 0 30px;
                 margin-top: 20px;
 
                 form {
@@ -88,13 +88,60 @@
 
                         label {
                             font-weight: bold;
+                            margin-bottom: 10px;
                         }
 
                         input {
                             width: 100%;
                             border: 1px solid var(--divider);
                             outline-color: var(--primary);
+                            margin-bottom: 20px;
+                            font-size: 1rem;
+                            padding: 6px 12px;
                         }
+                    }
+                }
+
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+
+                    span, label {
+                        font-size: .85rem;
+                    }
+
+                    span {
+                        cursor: pointer;
+                    }
+
+                    .checkbox-container {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+
+                        input {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+
+                .log-button {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #1E1E1E;
+                    cursor: pointer;
+                    
+                    span {
+                        color: #fff;
+                        padding: 10px 0;
                     }
                 }
             }

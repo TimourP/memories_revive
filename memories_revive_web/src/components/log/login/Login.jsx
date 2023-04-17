@@ -42,7 +42,7 @@ const Login = () => {
                                 <input placeholder='Entrez votre mot de passe' id="password-input" type='password' />
                             </div>
                         </form>
-                        <div>
+                        <div className='row'>
                             <div className='checkbox-container'>
                                 <input type='checkbox' id="remember-input" />
                                 <label htmlFor='remember-input'>Se souvenir de moi</label>
