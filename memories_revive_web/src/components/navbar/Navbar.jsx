@@ -19,10 +19,10 @@ const Navbar = () => {
             </div>
             <ul className='nav-container'>
               <li>
-                <Link className={location.pathname === "/products" ? "active" : "" } to="/products">Boutique</Link>
+                <Link className={location.pathname === "/frames" ? "active" : "" } to="/frames">Les cadres</Link>
               </li>
               <li>
-                <Link className={location.pathname === "/frames" ? "active" : "" } to="/frames">Les cadres</Link>
+                <Link className={location.pathname === "/products" ? "active" : "" } to="/products">Accessoires</Link>
               </li>
               <li>
                 <Link className={location.pathname === "/brand" ? "active" : "" } to="/brand">La marque</Link>

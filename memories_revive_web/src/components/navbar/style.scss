@@ -23,6 +23,7 @@
         ul {
             display: flex;
             flex-direction: row;
+            gap: 20px;
             align-items: center;
             justify-content: center;
             & > * + * { margin-left: 15px;}
@@ -44,6 +45,7 @@
 
                 a {
                     color: var(--secondary_text);
+                    text-transform: uppercase;
                 }
 
                 a.active {
@@ -61,5 +63,11 @@
 
     @media screen and (max-width: 687px) {
         padding: 10px 30px;;
+    }
+}
+
+.log-container{
+    li{
+        text-transform: uppercase;
     }
 }
