@@ -41,6 +41,14 @@
                     text-decoration: none;
                     cursor: pointer;
                 }
+
+                a {
+                    color: var(--secondary_text);
+                }
+
+                a.active {
+                    color: var(--primary);
+                }
             }
         }
 

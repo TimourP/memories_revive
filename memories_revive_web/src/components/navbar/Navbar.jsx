@@ -1,33 +1,34 @@
 import React, { useContext } from 'react'
 import "./style.scss"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import icon from "../../assets/icon.png"
 import shop_bag from "../../assets/nav/shop-bag.svg"
 import AuthContext from '../../contexts/AuthContext'
 
 const Navbar = () => {
   const {setNeedLog, user, logout} = useContext(AuthContext);
+  const location = useLocation();
 
   return (
     <header id='main-header'>
         <nav className='main-nav'>
             <div className='logo-container'>
-              <Link to="/">
+              <Link className={location.pathname === "/" ? "active" : "" } to="/">
                 <img src={icon} />
               </Link>
             </div>
             <ul className='nav-container'>
               <li>
-                <Link to="/products">Boutique</Link>
+                <Link className={location.pathname === "/products" ? "active" : "" } to="/products">Boutique</Link>
               </li>
               <li>
-              <Link to="/frames">Les cadres</Link>
+                <Link className={location.pathname === "/frames" ? "active" : "" } to="/frames">Les cadres</Link>
               </li>
               <li>
-                <Link to="/brand">La marque</Link>
+                <Link className={location.pathname === "/brand" ? "active" : "" } to="/brand">La marque</Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link className={location.pathname === "/contact" ? "active" : "" } to="/contact">Contact</Link>
               </li>
             </ul>
             <ul className='log-container'>

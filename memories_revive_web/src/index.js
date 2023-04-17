@@ -10,7 +10,8 @@ import ProductsList from './routes/products_list/ProductsList';
 import Home from './routes/home/Home';
 import NotFound from './routes/not_found/NotFound';
 import Frames from './routes/frames/Frames';
-import { useScroll } from 'react-router-dom';
+import Brand from './routes/brand/Brand';
+import Contact from './routes/contact/Contact';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "frames",
         element: <Frames />,
+      },
+      {
+        path: "brand",
+        element: <Brand />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
       {
         path: "",

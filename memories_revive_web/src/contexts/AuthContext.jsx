@@ -12,7 +12,7 @@ export const AuthProvider = (props) => {
 		last_name: "User",
 		token: null,
 	});
-    const [needLog, setNeedLog] = useState(false);
+    const [needLog, setNeedLog] = useState(true);
 
 	const login = async (email, password) => {
 	}
