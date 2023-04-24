@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createHashRouter } from 'react-router-dom';
 import Root from './routes/root/Root';
 import ErrorPage from './routes/error_page/ErrorPage';
 import ProductsList from './routes/products_list/ProductsList';
@@ -13,7 +13,7 @@ import Frames from './routes/frames/Frames';
 import Brand from './routes/brand/Brand';
 import Contact from './routes/contact/Contact';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/*",
     element: <Root />,
