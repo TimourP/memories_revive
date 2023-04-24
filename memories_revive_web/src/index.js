@@ -15,7 +15,7 @@ import Contact from './routes/contact/Contact';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
