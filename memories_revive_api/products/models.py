@@ -10,11 +10,13 @@ class Product(models.Model):
 
 	# is html
 	description = models.TextField()
+	description_fr = models.TextField(null=True, blank=True)
 	detailed_type = models.TextField()
 	display_name = models.TextField()
 	main_picture = models.CharField(max_length=255)
 	list_price = models.FloatField()
 	name = models.TextField()
+	name_fr = models.TextField(null=True, blank=True)
 	produce_delay = models.FloatField()
 	product_tooltip = models.TextField()
 	product_type = models.CharField(max_length=128, default="")
@@ -33,12 +35,6 @@ class Product(models.Model):
 	
 	def __str__(self):
 		return self.name
-	
-class ProductVariant(models.Model):
-	product = models.ForeignKey(Product, related_name="variants", on_delete=models.CASCADE)
-
-	list_price = models.FloatField()
-	odoo_id = models.IntegerField(default=0)
 
 
 class ProductImage(models.Model):
@@ -56,6 +52,7 @@ class ProductAttribute(models.Model):
 	products = models.ManyToManyField(Product, related_name="attributes")
 
 	name = models.TextField()
+	name_fr = models.TextField(null=True, blank=True)
 	display_name = models.TextField()
 
 	visibility = models.CharField(max_length=64)
@@ -72,6 +69,7 @@ class ProductAttributeValue(models.Model):
 	products = models.ForeignKey(Product, related_name="attributes_values", on_delete=models.CASCADE)
 
 	name = models.TextField()
+	name_fr = models.TextField(null=True, blank=True)
 	display_name = models.TextField()
 	price_extra = models.FloatField()
 
@@ -79,3 +77,22 @@ class ProductAttributeValue(models.Model):
 
 	def __str__(self):
 		return f"{self.attribute.name}: {self.name}"
+	
+
+class ProductVariant(models.Model):
+	product = models.ForeignKey(Product, related_name="variants", on_delete=models.CASCADE)
+
+	list_price = models.FloatField()
+	odoo_id = models.IntegerField(default=0)
+	attributes_values = models.ManyToManyField(ProductAttributeValue, related_name="variants")
+
+	description = models.TextField(blank=True, null=True)
+	description_fr = models.TextField(null=True, blank=True)
+
+	name_fr = models.TextField(null=True, blank=True)
+	display_name = models.TextField(blank=True, null=True)
+
+	def __str__(self):
+		values = self.attributes_values.all()
+		values = [i.name for i in values]
+		return f"{self.product.name}: {values}"

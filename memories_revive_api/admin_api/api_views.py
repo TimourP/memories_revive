@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
 from django.http.response import JsonResponse
-from products.models import Product, ProductAttribute, ProductAttributeValue
+from products.models import Product, ProductAttribute, ProductAttributeValue, ProductVariant
 from memories_revive_api.main_functions import odoo
 import json
 
@@ -16,7 +16,7 @@ def products(request):
 							       [
 								       "active", 
 									   "base_unit_price", 
-									   "description", 
+									   "description_sale", 
 									   "detailed_type",
 									   "display_name",
 									   "list_price",
@@ -31,25 +31,41 @@ def products(request):
 									   "rating_avg",
 									   "rating_count",
 									   "sale_delay",
-									   "is_published",
-									#    "product_tmpl_id",
-									#    "product_template_variant_value_ids"
-									]
+									   "is_published"
+									],
+									'context' :{'lang': "en_US"}
+							})
+		odoo_products_fr = odoo("product.template", "search_read", [[["sale_ok", "=", True]]], {"fields": 
+							       [
+									   "description_sale", 
+									   "name",
+									],
+									'context' :{'lang': "fr_BE"}
 							})
 
 		for product in odoo_products:
-			# images = odoo("product.image", "search_read", [[["product_tmpl_id", "=", product["id"]]]], {"fields": ["video_url"]})
-			# print(product["id"], product["name"], images)
+
+			french = [product_fr for product_fr in odoo_products_fr if product_fr["id"] == product["id"]]
+			french_data = {
+				"description_sale": product["description_sale"],
+				"name": product["name"]
+			}
+			if len(french) != 0:
+				french_data["description_sale"] = french[0]["description_sale"]
+				french_data["name"] = french[0]["name"]
+
 			existing = Product.objects.filter(odoo_id=product["id"])
 			if existing.exists():
 				existing = existing[0]
 				existing.active = product["active"]
 				existing.base_unit_price = product["base_unit_price"]
-				existing.description = product["description"]
+				existing.description = product["description_sale"]
+				existing.description_fr = french_data["description_sale"]
 				existing.detailed_type = product["detailed_type"]
 				existing.display_name = product["display_name"]
 				existing.list_price = product["list_price"]
 				existing.name = product["name"]
+				existing.name_fr = french_data["name"]
 
 				existing.produce_delay = product["produce_delay"]
 				existing.product_tooltip = product["product_tooltip"]
@@ -66,11 +82,13 @@ def products(request):
 				Product.objects.create(
 					active=product["active"], 
 					base_unit_price=product["base_unit_price"], 
-					description=product["description"], 
+					description=product["description_sale"],
+					description_fr=french_data["description_sale"],
 					detailed_type=product["detailed_type"], 
 					display_name=product["display_name"], 
 					list_price=product["list_price"], 
-					name=product["name"], 
+					name=product["name"],
+					name_fr=french_data["name"],
 					produce_delay=product["produce_delay"], 
 					product_tooltip=product["product_tooltip"], 
 					product_type=product["type"], 
@@ -145,4 +163,36 @@ def products_attributes(request):
 @permission_classes([IsAdminUser])
 def products_variants(request):
 	if request.method == "POST":
+		odoo_products = odoo("product.product", "search_read", [[["sale_ok", "=", True]]], {"fields": 
+							       [
+									   "list_price",
+									   "display_name",
+									   "description_sale",
+									   "product_tmpl_id",
+									   "product_template_variant_value_ids"
+									]
+							})
+		for product in odoo_products:
+			existing = ProductVariant.objects.filter(odoo_id=product["id"])
+			if existing.exists():
+				existing = existing[0]
+				existing.list_price = product["list_price"]
+				existing.display_name = product["display_name"]
+				existing.description = product["description_sale"]
+				existing.save()
+			else:
+				product_template = Product.objects.filter(odoo_id=product["product_tmpl_id"][0])
+				if not product_template.exists():
+					continue
+				prod = ProductVariant.objects.create(
+					list_price=product["list_price"],
+					display_name=product["display_name"],
+					description=product["description_sale"],
+					product=product_template[0],
+					odoo_id=product["id"]
+				)
+				for odoo_id in product["product_template_variant_value_ids"]:
+					value = ProductAttributeValue.objects.filter(odoo_id=odoo_id)
+					if value.exists():
+						prod.attributes_values.add(value[0])
 		return JsonResponse("hello", safe=False, status=status.HTTP_200_OK)

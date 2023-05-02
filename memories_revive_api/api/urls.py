@@ -18,4 +18,5 @@ urlpatterns = [
     #admin
     path('admin/products', admin_views.products),
     path('admin/products/attributes', admin_views.products_attributes),
+    path('admin/products/variants', admin_views.products_variants),
 ]
