@@ -1,0 +1,15 @@
+
+html.hidden {
+    header,
+    footer {
+        display: none;
+    }
+    
+    main {
+        padding: 10vh 0;
+    }
+    
+    .breadcrumb {
+        display: none;
+    }
+}
