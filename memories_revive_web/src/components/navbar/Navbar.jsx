@@ -8,6 +8,15 @@ import Basket from './basket/Basket'
 import { connect } from 'react-redux'
 import { mapDispatchToProps, mapStateToProps } from '../../store/dispatcher'
 
+const get_length = (list) => {
+	let total = 0;
+	for (let index = 0; index < list.length; index++) {
+		const elem = list[index];
+		total += elem.quantity;
+	}
+	return total
+}
+
 const Navbar = ({basket}) => {
 	const {setNeedLog, user, logout} = useContext(AuthContext);
 	const location = useLocation();
@@ -26,7 +35,7 @@ const Navbar = ({basket}) => {
 								<Link className={location.pathname === "/frames" ? "active" : "" } to="/frames">Les cadres</Link>
 							</li>
 							<li>
-								<Link className={location.pathname === "/products" ? "active" : "" } to="/products">Accessoires</Link>
+								<Link className={location.pathname === "/products" ? "active" : "" } to="/shop">Accessoires</Link>
 							</li>
 							<li>
 								<Link className={location.pathname === "/brand" ? "active" : "" } to="/brand">La marque</Link>
@@ -46,9 +55,9 @@ const Navbar = ({basket}) => {
 							<li>
 								<Link className='shop-link' onMouseEnter={() => setBasketOpen(true)} onMouseLeave={() => setTimeout(() => {setBasketOpen(false)}, 300)} to="/shop">
 									{
-										basket.lines.length ? 
+										basket.lines && basket.lines.length ? 
 										<span className='abs-count'>
-											{basket.lines.length}
+											{get_length(basket.lines)}
 										</span> : null
 									}
 									<img src={shop_bag} />

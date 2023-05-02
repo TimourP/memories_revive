@@ -11,6 +11,14 @@ export const fetchBasket = createAsyncThunk(
 	}
 )
 
+export const addToBasket = createAsyncThunk(
+	"basket/addToBasket",
+	async ({id, amount}) => {
+		const response = await axios.post(`/basket/product/${id}`);
+		return response.data;
+	}
+)
+
 const basketSlice = createSlice({
 	name: "basket",
 	initialState: {},
@@ -24,6 +32,7 @@ const basketSlice = createSlice({
 
 export const basketMethods = {
 	fetchBasket,
+	addToBasket
 }
 
 export default basketSlice

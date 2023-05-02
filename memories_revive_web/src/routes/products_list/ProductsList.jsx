@@ -30,6 +30,7 @@ const ProductsList = ({products}) => {
             products.map((elem, id) => {
               const prod = {
                 title: elem.name,
+                id: elem.variants[0].odoo_id,
                 description: elem.description,
                 price: elem.variants[0].list_price.toFixed(2),
                 image: generate_image_full_path(elem.variants[0].images[0])

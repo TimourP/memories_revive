@@ -39,7 +39,7 @@ const ProductSection = () => {
                 <BigTitle title="Nos derniers accessoires pour cadres" subtitle={"Produits"} />
                 <p className='description'>Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odia mattis.</p>
             </div>
-            <Link to="/products" className='main-button'>
+            <Link to="/shop" className='main-button'>
                 Tous les produits
             </Link>
         </div>

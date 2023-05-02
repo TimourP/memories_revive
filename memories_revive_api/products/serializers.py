@@ -10,4 +10,4 @@ class ProductVariantSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProductVariant
 		depth = 1
-		fields = ('id', 'list_price', 'images')
+		fields = ('id', 'list_price', 'images', "odoo_id")

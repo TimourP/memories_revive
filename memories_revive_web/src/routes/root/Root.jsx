@@ -7,18 +7,21 @@ import { CustomisationProvider } from '../../contexts/CustomisationContext'
 import Footer from '../../components/footer/Footer'
 import { store } from '../../store'
 import { Provider } from 'react-redux'
+import { PopupProvider } from '../../contexts/PopupContext'
 
 const Root = () => {
   return (
     <div className='main'>
       <Provider store={store}>
         <AuthProvider>
-          <Navbar/>
-          <Login/>
-          <CustomisationProvider>
-            <Outlet />
-          </CustomisationProvider>
-          <Footer/>
+          <PopupProvider>
+            <Navbar/>
+            <Login/>
+            <CustomisationProvider>
+              <Outlet />
+            </CustomisationProvider>
+            <Footer/>
+          </PopupProvider>
         </AuthProvider>
       </Provider>
     </div>

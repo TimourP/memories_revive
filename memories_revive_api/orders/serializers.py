@@ -6,7 +6,7 @@ class ProductVariantSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProductVariant
 		depth = 1
-		fields = ['id', 'list_price', "odoo_id", "display_name", "images", "attributes_values"]
+		fields = ['id', 'list_price', "odoo_id", "display_name", "images", "attributes_values", "product"]
 
 class OrderLineSerializer(serializers.ModelSerializer):
 

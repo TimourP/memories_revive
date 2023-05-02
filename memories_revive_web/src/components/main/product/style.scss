@@ -60,6 +60,16 @@
             text-transform: uppercase;
         }
 
+        &.loading {
+            cursor: not-allowed;
+            span {
+                color: var(--secondary_text);
+            }
+            &::before {
+                width: calc(100% + 10px);
+            }
+        }
+
         &::before {
             content: "";
             position: absolute;

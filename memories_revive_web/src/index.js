@@ -13,6 +13,7 @@ import Frames from './routes/frames/Frames';
 import Brand from './routes/brand/Brand';
 import Contact from './routes/contact/Contact';
 import Account from './routes/account/Account';
+import Cart from './routes/cart/Cart';
 
 const router = createHashRouter([
   {
@@ -21,7 +22,7 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "products",
+        path: "shop",
         element: <ProductsList />,
       },
       {
@@ -39,6 +40,10 @@ const router = createHashRouter([
       {
         path: "account",
         element: <Account />,
+      },
+      {
+        path: "shop/basket",
+        element: <Cart />,
       },
       {
         path: "",

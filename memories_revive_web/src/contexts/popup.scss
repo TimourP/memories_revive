@@ -1,0 +1,45 @@
+
+
+#just-add-popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba($color: #000000, $alpha: .6);
+    position: fixed;
+    z-index: 2000;
+    transition: .5s;
+
+    &.remove {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .just-add-content {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--background);
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+
+        p {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            span {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        }
+    }
+}
