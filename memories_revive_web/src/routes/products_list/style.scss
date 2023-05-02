@@ -6,4 +6,87 @@
     flex-direction: column;
     width: 100%;
     padding-top: 120px;
+
+    .product-list {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 10vh;
+
+        .title-container {
+            p {
+                max-width: 500px;
+            }
+        }
+
+        .products-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+            & > * + * { margin-left: 20px;}
+    
+            .main-product-div {
+                width: calc(25% - 20px);
+                margin-top: 20px;
+                &:nth-child(5),
+                &:nth-child(9),
+                &:nth-child(13),
+                &:nth-child(17),
+                &:nth-child(21) {
+                    margin-left: 0;
+                }
+            }
+    
+            @media screen and (max-width: 1100px){
+                flex-wrap: wrap;
+    
+                .main-product-div {
+                    width: calc(33% - 20px);
+
+                    &:nth-child(5),
+                    &:nth-child(9),
+                    &:nth-child(13),
+                    &:nth-child(17),
+                    &:nth-child(21) {
+                        margin-left: 20px;
+                    }
+
+                    &:nth-child(4),
+                    &:nth-child(7),
+                    &:nth-child(10),
+                    &:nth-child(13),
+                    &:nth-child(16),
+                    &:nth-child(19),
+                    &:nth-child(22) {
+                        margin-left: 0;
+                    }
+                }
+            }
+    
+            @media screen and (max-width: 900px){
+                .main-product-div {
+                    width: calc(50% - 20px);
+
+                    &:nth-child(even) {
+                        margin-left: 20px;
+                    }
+
+                    &:nth-child(odd) {
+                        margin-left: 0;
+                    }
+
+                }
+            }
+    
+            @media screen and (max-width: 600px){
+                .main-product-div {
+                    width: 100%;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }

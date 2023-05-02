@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import Profile
-from products.models import Product
+from products.models import Product, ProductVariant
 from memories_revive_api.main_functions import odoo
 import uuid
 
@@ -34,7 +34,7 @@ class Order(models.Model):
 	
 class OrderLine(models.Model):
 	order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='lines')
-	product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='lines')
+	product = models.ForeignKey(ProductVariant, on_delete=models.CASCADE, related_name='lines')
 	quantity = models.IntegerField(default=1)
 
 	odoo_id = models.IntegerField(default=0)

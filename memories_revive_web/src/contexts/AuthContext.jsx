@@ -1,7 +1,10 @@
 import React, { useEffect, useRef }  from 'react'
 import { createContext, useState } from 'react';
 import { getData, storeData } from '../functions/store_data';
-import axios, { set_instance_token, unset_instance_token } from "../services/axios"
+import { baseURL, set_instance_token, unset_instance_token } from "../services/axios"
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../store/slices/products';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -12,9 +15,19 @@ export const AuthProvider = (props) => {
 		last_name: "User",
 		token: null,
 	});
+	const dispatch = useDispatch();
     const [needLog, setNeedLog] = useState(false);
 
 	const login = async (email, password) => {
+		const resp = await axios.post(`${baseURL}/auth/login`, {
+			username: email,
+			password: password
+		})
+			.then(e => e.data)
+			.catch(e => null)
+		if (resp) {
+
+		}
 	}
 
 	const setup = async () => {
@@ -23,6 +36,7 @@ export const AuthProvider = (props) => {
 
 	useEffect(() => {
 		setup();
+		dispatch(fetchProducts());
 	}, [])
 	
 

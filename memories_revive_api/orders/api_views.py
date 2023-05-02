@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.http.response import JsonResponse
 from .models import Order, OrderLine
-from products.models import Product
+from products.models import Product, ProductVariant
 from .serializers import OrderSerializer
 
 @api_view(["GET"])
@@ -25,7 +25,7 @@ def basket(request):
 def product_to_basket(request, product_id):
 	if request.method == "POST":
 
-		product = Product.objects.filter(id=product_id)
+		product = ProductVariant.objects.filter(odoo_id=product_id)
 		if not product.exists():
 			return JsonResponse({"detail": "product does't exist"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
 		product = product.first()
@@ -46,7 +46,7 @@ def product_to_basket(request, product_id):
 		return JsonResponse({"detail": "ok"}, safe=False, status=status.HTTP_200_OK)
 
 	elif request.method == "DELETE":
-		product = Product.objects.filter(id=product_id)
+		product = ProductVariant.objects.filter(odoo_id=product_id)
 		if not product.exists():
 			return JsonResponse({"detail": "product does't exist"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
 		product = product.first()

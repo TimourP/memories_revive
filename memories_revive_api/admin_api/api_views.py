@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework import status
 from django.http.response import JsonResponse
-from products.models import Product, ProductAttribute, ProductAttributeValue, ProductVariant
+from products.models import Product, ProductAttribute, ProductAttributeValue, ProductVariant, ProductImage
 from memories_revive_api.main_functions import odoo
 import json
 
@@ -167,6 +167,7 @@ def products_variants(request):
 							       [
 									   "list_price",
 									   "display_name",
+									   "image_1920",
 									   "description_sale",
 									   "product_tmpl_id",
 									   "product_template_variant_value_ids"
@@ -191,6 +192,10 @@ def products_variants(request):
 					product=product_template[0],
 					odoo_id=product["id"]
 				)
+				img = ProductImage.objects.create(
+					product=prod,
+				)
+				img.load_image(product["image_1920"])
 				for odoo_id in product["product_template_variant_value_ids"]:
 					value = ProductAttributeValue.objects.filter(odoo_id=odoo_id)
 					if value.exists():

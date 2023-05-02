@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.files.base import ContentFile
+import base64
 
 # Create your models here.
 
@@ -32,19 +34,10 @@ class Product(models.Model):
 	sale_delay = models.FloatField()
 	
 	odoo_id = models.IntegerField(default=0)
+	classic = models.BooleanField(default=True)
 	
 	def __str__(self):
 		return self.name
-
-
-class ProductImage(models.Model):
-	product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
-	display_name = models.CharField(max_length=255)
-	image = models.CharField(max_length=255)
-	video_url = models.CharField(max_length=255, blank=True, null=True)
-
-	def __str__(self):
-		return self.product.name + "'s image"
 	
 
 class ProductAttribute(models.Model):
@@ -61,7 +54,7 @@ class ProductAttribute(models.Model):
 
 	def __str__(self):
 		return self.name
-
+	
 
 class ProductAttributeValue(models.Model):
 
@@ -96,3 +89,18 @@ class ProductVariant(models.Model):
 		values = self.attributes_values.all()
 		values = [i.name for i in values]
 		return f"{self.product.name}: {values}"
+	
+
+class ProductImage(models.Model):
+	product = models.ForeignKey(ProductVariant, related_name="images", on_delete=models.CASCADE)
+	image = models.ImageField(upload_to='product_images/', blank=True, null=True)
+
+	def load_image(self, image_bytes):
+		if not image_bytes:
+			return
+		image_name = self.product.product.name.replace(" ", "_").lower()
+		self.image.save(f"{image_name}.png", ContentFile(base64.b64decode(image_bytes)))
+		self.save()
+
+	def __str__(self):
+		return self.product.product.name + "'s image"

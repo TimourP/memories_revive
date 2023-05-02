@@ -9,8 +9,8 @@ const Login = () => {
     const click_inside = useRef(false);
     const [logData, setLogData] = useState({
         is_login: true,
-        email: "",
-        password: "",
+        email: "trash.todev@gmail.com",
+        password: "Django07",
         name: "",
     })
 
@@ -20,6 +20,12 @@ const Login = () => {
 	}
 
     document.body.style.overflowY = "hidden";
+
+    const main_log = () => {
+        if (logData.is_login) {
+            login(logData.email, logData.password);
+        }
+    }
 
     return (
         <div className='main-log' onClick={() => {if(!click_inside.current){setNeedLog(false);click_inside.current = false}else{click_inside.current = false}}}>
@@ -35,11 +41,11 @@ const Login = () => {
                         <form>
                             <div className='input-label'>
                                 <label htmlFor="email-input">Email</label>
-                                <input placeholder='Entrez votre email' id="email-input" type='email' autoComplete='email' />
+                                <input defaultValue={logData.email} placeholder='Entrez votre email' id="email-input" type='email' autoComplete='email' />
                             </div>
                             <div className='input-label'>
                                 <label htmlFor="password-input">Mot de passe</label>
-                                <input placeholder='Entrez votre mot de passe' id="password-input" type='password' />
+                                <input defaultValue={logData.password} placeholder='Entrez votre mot de passe' id="password-input" type='password' />
                             </div>
                         </form>
                         <div className='row'>
@@ -50,7 +56,7 @@ const Login = () => {
                             <span>Mot de passe oublié</span>
                         </div>
                         <div className='log-button'>
-                            <span>Se connecter</span>
+                            <span onClick={main_log}>{logData.is_login ? "Se connecter" : "Créer un compte"}</span>
                         </div>
                     </div>
                 </div>
