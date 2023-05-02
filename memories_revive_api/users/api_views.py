@@ -7,6 +7,8 @@ from api.custom_decorators import check_json
 from api.helper import check_dict_values_type
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+from .models import Profile
 
 @api_view(["POST"])
 @check_json(err_message="json object is required")
@@ -33,6 +35,17 @@ def login(request, data):
 			}, safe=False, status=status.HTTP_200_OK)
 		else:
 			return JsonResponse({"details": "Unable to log in with provided credentials."}, safe=False, status=status.HTTP_400_BAD_REQUEST)
+		
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def profile(request):
+	if request.method == "POST":
+		return JsonResponse({
+				"first_name": request.user.profile.first_name,
+				"last_name": request.user.profile.last_name,
+				"email": request.user.profile.email,
+			}, safe=False, status=status.HTTP_200_OK)
 	
 
 @api_view(["POST"])
@@ -40,12 +53,28 @@ def login(request, data):
 def register(request, data):
 	if request.method == "POST":
 		login_data = {
-			"name": data.get("name"),
+			"last_name": data.get("last_name"),
+			"first_name": data.get("first_name"),
 			"email": data.get("email"),
 			"password": data.get("password")
 		}
-		valid = check_dict_values_type(login_data, [str, str, str])
+		valid = check_dict_values_type(login_data, [str, str, str, str])
 		if not valid[0]:
 			return JsonResponse({"detail": valid[1]}, safe=False, status=status.HTTP_400_BAD_REQUEST)
 		
-		return JsonResponse("hello", safe=False, status=status.HTTP_200_OK)
+		user = User.objects.create(
+			first_name=login_data["first_name"],
+			last_name=login_data["last_name"],
+			email=login_data["email"],
+			username=login_data["email"],
+		)
+		user.set_password(login_data["password"])
+		user.save()
+		Token.objects.create(user=user)
+		p = Profile.objects.create(
+			user=user,
+			first_name=login_data["first_name"],
+			last_name=login_data["last_name"],
+			email=login_data["email"],
+		)
+		return JsonResponse("ok", safe=False, status=status.HTTP_200_OK)

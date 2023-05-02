@@ -12,6 +12,7 @@ import NotFound from './routes/not_found/NotFound';
 import Frames from './routes/frames/Frames';
 import Brand from './routes/brand/Brand';
 import Contact from './routes/contact/Contact';
+import Account from './routes/account/Account';
 
 const router = createHashRouter([
   {
@@ -36,6 +37,10 @@ const router = createHashRouter([
         element: <Contact />,
       },
       {
+        path: "account",
+        element: <Account />,
+      },
+      {
         path: "",
         element: <Home />,
       },
@@ -55,6 +60,7 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

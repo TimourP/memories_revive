@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { mapDispatchToProps, mapStateToProps } from '../../store/dispatcher'
 import Product from '../../components/main/product/Product'
 
-const generate_image_full_path = (image) => {
+export const generate_image_full_path = (image) => {
   if (!image.image) {
     return "http://localhost:8000/media/usable/empty.png"
   }

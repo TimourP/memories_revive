@@ -15,6 +15,9 @@ urlpatterns = [
     path('auth/login', users_views.login),
     path('auth/register', users_views.register),
 
+    #me
+    path('me/profile', users_views.profile),
+
     #admin
     path('admin/products', admin_views.products),
     path('admin/products/attributes', admin_views.products_attributes),

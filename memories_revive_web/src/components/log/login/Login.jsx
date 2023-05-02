@@ -11,7 +11,8 @@ const Login = () => {
         is_login: true,
         email: "trash.todev@gmail.com",
         password: "Django07",
-        name: "",
+        first_name: "Timour",
+        last_name: "Petit",
     })
 
     if (!needLog) {
@@ -43,6 +44,19 @@ const Login = () => {
                                 <label htmlFor="email-input">Email</label>
                                 <input defaultValue={logData.email} placeholder='Entrez votre email' id="email-input" type='email' autoComplete='email' />
                             </div>
+                            {
+                                logData.is_login ? null :
+                                <div className='input-row'>
+                                    <div className='input-label'>
+                                        <label htmlFor="name-input">Nom</label>
+                                        <input defaultValue={logData.last_name} placeholder='Entrez votre nom' id="name-input" type='text' />
+                                    </div>
+                                    <div className='input-label'>
+                                        <label htmlFor="name-input">Prénom</label>
+                                        <input defaultValue={logData.first_name} placeholder='Entrez votre prénom' id="name-input" type='text' />
+                                    </div>
+                                </div>
+                            }
                             <div className='input-label'>
                                 <label htmlFor="password-input">Mot de passe</label>
                                 <input defaultValue={logData.password} placeholder='Entrez votre mot de passe' id="password-input" type='password' />
