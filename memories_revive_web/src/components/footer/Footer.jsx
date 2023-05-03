@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./style.scss"
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/icon.png"
 import bpost from "../../assets/footer/bpost-logo.png"
 import dhl from "../../assets/footer/dhl-logo.svg"
+import AuthContext from '../../contexts/AuthContext';
 
 const Footer = () => {
+    const {needHide} = useContext(AuthContext);
+
+    if (needHide)
+        return null;
+
     return (
         <div  id="footer">
             <section>

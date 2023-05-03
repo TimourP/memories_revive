@@ -6,6 +6,8 @@ from django.http.response import JsonResponse
 from .models import Order, OrderLine
 from products.models import Product, ProductVariant
 from .serializers import OrderSerializer
+from memories_revive_api.main_functions import odoo
+import json
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
@@ -18,6 +20,22 @@ def basket(request):
 			return JsonResponse({"detail": "no open basket"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 		basket_serializer = OrderSerializer(open_order, many=False)
 		return JsonResponse(basket_serializer.data, safe=False, status=status.HTTP_200_OK)
+	
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def promo_code(request):
+	if request.method == "POST":
+		open_order = Order.objects.filter(state="draft")
+		if open_order.exists():
+			open_order = open_order.first()
+		else:
+			return JsonResponse({"detail": "no open basket"}, safe=False, status=status.HTTP_404_NOT_FOUND)
+		res = odoo("sale.order.line", "search_read", [[["order_id", "=", 79]]])
+
+		print(json.dumps(res[1], indent=4))
+		return JsonResponse("ok", safe=False, status=status.HTTP_200_OK)
+
 
 
 @api_view(["POST", "DELETE"])

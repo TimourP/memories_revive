@@ -1,0 +1,24 @@
+
+
+#checkout-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 20px 10px;
+
+    .step-value {
+        &.bold {
+            font-weight: bold;
+        }
+    }
+
+    .h-divider {
+        display: block;
+        width: 30px;
+        height: 1px;
+        background-color: var(--secondary_text);
+        margin: 0 10px;
+    }
+}

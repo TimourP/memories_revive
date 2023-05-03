@@ -11,6 +11,16 @@
     padding: 10px 60px;
     background-color: var(--background);
     z-index: 1000;
+    transition: .3s;
+    
+
+    &.sticky {
+        box-shadow: var(--box_shadow);
+    }
+
+    &.nav_hidden {
+        top: -80px;
+    }
 
     .main-nav {
         display: flex;

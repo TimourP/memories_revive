@@ -25,6 +25,7 @@ export const AuthProvider = (props) => {
 	});
 	const dispatch = useDispatch();
     const [needLog, setNeedLog] = useState(false);
+	const [needHide, setNeedHide] = useState(false);
 
 	const login = async (email, password) => {
 		unset_instance_token();
@@ -99,7 +100,9 @@ export const AuthProvider = (props) => {
             register,
 			logout,
             needLog,
-            setNeedLog
+            setNeedLog,
+			needHide,
+			setNeedHide
 		}}>
 			{ props.children }
 		</AuthContext.Provider>

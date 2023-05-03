@@ -7,6 +7,7 @@ from admin_api import api_views as admin_views
 urlpatterns = [ 
     path('basket/product/<int:product_id>', orders_views.product_to_basket),
     path('basket', orders_views.basket),
+    path('basket/promo-code', orders_views.promo_code),
 
     #products
     path('products', products_views.products),

@@ -8,6 +8,7 @@ import Footer from '../../components/footer/Footer'
 import { store } from '../../store'
 import { Provider } from 'react-redux'
 import { PopupProvider } from '../../contexts/PopupContext'
+import NavbarEmpty from '../../components/navbar/nav_empty/NavbarEmpty'
 
 const Root = () => {
   return (
@@ -16,6 +17,7 @@ const Root = () => {
         <AuthProvider>
           <PopupProvider>
             <Navbar/>
+            <NavbarEmpty/>
             <Login/>
             <CustomisationProvider>
               <Outlet />
