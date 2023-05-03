@@ -3,35 +3,12 @@ import BigTitle from '../../main/big_title/BigTitle'
 import { Link } from 'react-router-dom'
 import "./style.scss"
 import Product from '../../main/product/Product'
+import { connect } from 'react-redux'
+import { mapStateToProps } from '../../../store/dispatcher'
+import { generate_image_full_path } from '../../../routes/products_list/ProductsList';
 
-const products = [
-    {
-        price: 90,
-        title: "Produit 1",
-        description: "Corem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://www.thelightingsuperstore.co.uk/images/fs/37/mondrian-400-led-matt-nickel-framewall-mounted-light-7890-5613.jpg"
-    },
-    {
-        price: 90,
-        title: "Produit 1",
-        description: "Corem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://www.thelightingsuperstore.co.uk/images/fs/37/mondrian-400-led-matt-nickel-framewall-mounted-light-7890-5613.jpg"
-    },
-    {
-        price: 90,
-        title: "Produit 1",
-        description: "Corem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://www.thelightingsuperstore.co.uk/images/fs/37/mondrian-400-led-matt-nickel-framewall-mounted-light-7890-5613.jpg"
-    },
-    {
-        price: 90,
-        title: "Produit 1",
-        description: "Corem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "https://www.thelightingsuperstore.co.uk/images/fs/37/mondrian-400-led-matt-nickel-framewall-mounted-light-7890-5613.jpg"
-    },
-]
 
-const ProductSection = () => {
+const ProductSection = ({products}) => {
   return (
     <section id="home-product-section">
         <div className='section-header'>
@@ -45,9 +22,16 @@ const ProductSection = () => {
         </div>
         <div className='products-wrapper'>
             {
-                products.map((elem, id) => {
+                products.slice(0, 4).map((elem, id) => {
+                    const prod = {
+                        title: elem.name,
+                        id: elem.variants[0].odoo_id,
+                        description: elem.description,
+                        price: elem.variants[0].list_price.toFixed(2),
+                        image: generate_image_full_path(elem.variants[0].images[0])
+                    }
                     return (
-                        <Product product={elem} key={id} />
+                        <Product product={prod} key={id} />
                     )
                 })
             }
@@ -56,4 +40,4 @@ const ProductSection = () => {
   )
 }
 
-export default ProductSection
+export default connect(mapStateToProps, null)(ProductSection)

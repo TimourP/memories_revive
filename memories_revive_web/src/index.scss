@@ -119,3 +119,27 @@ section {
 	line-height: 1.4;
 }
 
+.secondary-button {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #1E1E1E;
+	border: 1px solid #1E1E1E;
+	transition: .3s;
+	text-decoration: none;
+	cursor: pointer;
+
+	color: #fff;
+	padding: 5px 10px;
+	
+	span {
+		color: #fff;
+	}
+
+	&:hover {
+		background-color: #fff;
+		color: #1E1E1E;
+	}
+}
+

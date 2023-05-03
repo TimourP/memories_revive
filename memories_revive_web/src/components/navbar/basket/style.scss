@@ -1,19 +1,25 @@
 
 
 #basket {
-    display: none;
+    display: flex;
     position: absolute;
     top: 40px;
     right: 0;
     padding-top: 10px;
     transition: .3s;
+    pointer-events: none;
+    opacity: 0;
 
     &:hover {
+        opacity: 1;
         display: flex;
+        pointer-events: all;
     }
 
     &.active {
         display: flex;
+        opacity: 1;
+        pointer-events: all;
     }
 
     .basket-container {
@@ -59,8 +65,14 @@
 
         table {
             width: 100%;
+            width: 100%;
+            position: static;
+            border-collapse: collapse;
 
             thead {
+                position: sticky;
+                top: 0;
+                background-color: #F6F6F6;
                 th {
                     font-size: .7rem;
                     color: var(--secondary_text);
@@ -95,6 +107,7 @@
                                 width: 96px;
                                 height: 96px;
                                 object-fit: cover;
+                                object-position: center;
                                 box-shadow: var(--box_shadow);
                             }
 

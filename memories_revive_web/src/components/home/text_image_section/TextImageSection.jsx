@@ -17,7 +17,7 @@ const TextImageSection = () => {
                 <p>Pour ceux qui ont eu la chance de posséder leur propre voiture, ils se rappellent de la fierté et de la liberté qu'ils ont ressenties lorsqu'ils ont pris la route pour la première fois, ainsi que des moments inoubliables qu'ils ont partagés avec leurs amis et leur famille. </p>
                 <p>Le désir d'une voiture spécifique représente bien plus qu'un simple caprice. C'est un symbole de la réussite, de la liberté, de l'aventure et du rêve, qui peut susciter des émotions profondes comme l'histoire de l'automobile, ou encore la passion pour la technologie et la performance.</p>
             </div>
-            <Link to="/frame" className='main-button'>
+            <Link to="/frames" className='main-button'>
                 Créer son cadre
             </Link>
         </div>

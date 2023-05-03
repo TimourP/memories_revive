@@ -8,7 +8,7 @@ import Basket from './basket/Basket'
 import { connect } from 'react-redux'
 import { mapDispatchToProps, mapStateToProps } from '../../store/dispatcher'
 
-const get_length = (list) => {
+export const get_length = (list) => {
 	let total = 0;
 	for (let index = 0; index < list.length; index++) {
 		const elem = list[index];
@@ -35,7 +35,7 @@ const Navbar = ({basket}) => {
 								<Link className={location.pathname === "/frames" ? "active" : "" } to="/frames">Les cadres</Link>
 							</li>
 							<li>
-								<Link className={location.pathname === "/products" ? "active" : "" } to="/shop">Accessoires</Link>
+								<Link className={location.pathname === "/shop" ? "active" : "" } to="/shop">Accessoires</Link>
 							</li>
 							<li>
 								<Link className={location.pathname === "/brand" ? "active" : "" } to="/brand">La marque</Link>
@@ -53,7 +53,7 @@ const Navbar = ({basket}) => {
 							</li>
 							<li className='divider'></li>
 							<li>
-								<Link className='shop-link' onMouseEnter={() => setBasketOpen(true)} onMouseLeave={() => setTimeout(() => {setBasketOpen(false)}, 300)} to="/shop">
+								<Link className='shop-link' onMouseEnter={() => setBasketOpen(true)} onMouseLeave={() => setTimeout(() => {setBasketOpen(false)}, 300)} to="/shop/basket">
 									{
 										basket.lines && basket.lines.length ? 
 										<span className='abs-count'>

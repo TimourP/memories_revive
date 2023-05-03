@@ -8,35 +8,28 @@ let timout = null;
 
 export const PopupProvider = (props) => {
 
-	const [justAdd, setJustAddState] = useState({
-        picture: "http://localhost:8000/media/product_images/produit_de_nettoyage.png",
-        amount: 2,
-        title: "PRODUIT DE NETTOYAGE",
-        will_remove: true,
-    });
+	const [justAdd, setJustAddState] = useState(null);
+    const [hide, setHide] = useState(true);
 
     const click_inside = useRef(false)
 
     const close = () => {
         if (!click_inside.current) {
             clearTimeout(timout)
-            setJustAddState({...justAdd, will_remove: true})
-            setTimeout(() => {
-                setJustAddState(null);
-            }, 500);
+            setHide(true);
         }
         click_inside.current = false;
     }
 
     const setJustAdd = (data) => {
-        setJustAddState({...data, will_remove: false});
+        setJustAddState(data);
+        setHide(false);
         timout = setTimeout(() => {
-            setJustAddState({...justAdd, will_remove: true})
-            setTimeout(() => {
-                setJustAddState(null);
-            }, 500);
+            setHide(true);
         }, 4000);
     }
+
+    console.log(justAdd?.picture)
 
 	return (
 		<PopupContext.Provider value={{ 
@@ -44,7 +37,7 @@ export const PopupProvider = (props) => {
             setJustAdd
 		}}>
             {
-                <div onClick={close} id={`just-add-popup`} className={`${justAdd?.will_remove || !justAdd ? "remove": ""}`}>
+                <div onClick={close} id={`just-add-popup`} className={`${hide ? "remove": ""}`}>
                     <div onClick={() => click_inside.current = true} className={`just-add-content`}>
                         <img src={justAdd?.picture}/>
                         <p><span>{justAdd?.amount}×</span> {justAdd?.title} ajouté au panier</p>

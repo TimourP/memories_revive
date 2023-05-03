@@ -5,6 +5,35 @@
     flex-direction: row;
     width: 100%;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 140px 0;
+
+    section {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .contact-text {
+            p {
+                max-width: 450px;
+                color: var(--secondary_text);
+            }
+
+            h1, h2 {
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+                margin-top: 40px;
+            }
+
+            a {
+                margin-top: 10px;
+            }
+        }
+    }
+    
 }

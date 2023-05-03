@@ -14,6 +14,7 @@ import Brand from './routes/brand/Brand';
 import Contact from './routes/contact/Contact';
 import Account from './routes/account/Account';
 import Cart from './routes/cart/Cart';
+import Career from './routes/career/Career';
 
 const router = createHashRouter([
   {
@@ -44,6 +45,10 @@ const router = createHashRouter([
       {
         path: "shop/basket",
         element: <Cart />,
+      },
+      {
+        path: "career",
+        element: <Career />,
       },
       {
         path: "",
