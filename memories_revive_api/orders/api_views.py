@@ -31,9 +31,9 @@ def promo_code(request):
 			open_order = open_order.first()
 		else:
 			return JsonResponse({"detail": "no open basket"}, safe=False, status=status.HTTP_404_NOT_FOUND)
-		res = odoo("sale.order.line", "search_read", [[["order_id", "=", 79]]])
+		res = odoo("payment.link.wizard", "search_read", [])
 
-		print(json.dumps(res[1], indent=4))
+		print(json.dumps(res, indent=4))
 		return JsonResponse("ok", safe=False, status=status.HTTP_200_OK)
 
 

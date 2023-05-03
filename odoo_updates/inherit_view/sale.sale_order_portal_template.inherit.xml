@@ -1,0 +1,52 @@
+<data name="Sales Order Portal Template Test" inherit_id="sale.sale_order_portal_template" primary="True">
+    <xpath expr="//div[hasclass('o_portal_sale_sidebar')]" position="replace">
+        <div>
+        <div class="modal-dialog" t-if="not sale_order._has_to_be_signed(True) and sale_order._has_to_be_paid(True)">
+            <div class="modal-content">
+                <div id="revive-modal-container-section">
+                    <div id="revive-modal-container">
+                        <img src="https://memoriesrevive.timour.me/favicon.ico" id="absolute-logo" />
+                        <main class="modal-body" id="sign-dialog">
+                            <div t-if="providers or tokens" id="payment_method" class="text-start">
+                                <h3 class="mb24">Pay with</h3>
+                                <t t-call="payment.checkout"/>
+                            </div>
+                            <div t-else="" class="alert alert-warning">
+                                <strong>No suitable payment option could be found.</strong><br/>
+                                If you believe that it is an error, please contact the website administrator.
+                            </div>
+                        </main>
+                        <div id="revive-total-basket">
+                            <div id='revive-total-basket-content'>
+                                <h1>Total</h1>
+                                <div id='revive-value-price1'>
+                                    <span className='title bold'>Sous total (4 articles)</span>
+                                    <span>264,74 €</span>
+                                </div>
+                                <div id='revive-value-price2'>
+                                    <span className='title'>Taxes</span>
+                                    <span>Tous les prix incluent la TVA</span>
+                                </div>
+                                <span id='revive-divider'></span>
+                                <div id='revive-value-price3'>
+                                    <span className='title bolder'>Total</span>
+                                    <span className='title bolder'>264,74 €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.getElementsByTagName("html")[0].classList.add("hidden")
+            </script>
+        </div>
+        <div t-else="">
+            <script>
+            window.location.href = "https://memoriesrevive.timour.me/"
+            </script>
+        </div>
+    </div>
+</xpath>
+
+<xpath expr="." position="attributes"><attribute name="t-name">sale.sale_order_portal_template_test</attribute></xpath></data>

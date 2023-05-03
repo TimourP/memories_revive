@@ -14,16 +14,20 @@ class Order(models.Model):
 	odoo_id = models.IntegerField(default=0)
 	state = models.CharField(default="draft", max_length=32)
 
+	access_token = models.CharField(max_length=64, null=True)
+
 	def save(self, *args, **kwargs):
 		if not self.pk:
 			# This code only happens if the objects is
 			# not in the database yet. Otherwise it would
 			# have pk
+			access_token = str(uuid.uuid4())
 			partner_data = {
 				'partner_id': self.profile.odoo_id,
-				'access_token': str(uuid.uuid4())
+				'access_token': access_token
 			}
 			res = odoo("sale.order", "create", [partner_data])
+			self.access_token = access_token
 			self.odoo_id = res
 			super(Order, self).save(*args, **kwargs)
 		else:

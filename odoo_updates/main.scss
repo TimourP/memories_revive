@@ -1,0 +1,119 @@
+
+html.hidden {
+    header,
+    footer {
+        display: none;
+    }
+    
+    .breadcrumb {
+        display: none;
+    }
+    
+    #wrapwrap.o_portal {
+        background-color: #fff !important;
+        align-items: flex-start;
+        
+        .border {
+            display: none;
+        }
+        
+        .modal-content {
+            border: none;
+        }
+        
+    }
+    
+}
+
+#revive-modal-container-section {
+    width: calc(100vw - 30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+#revive-modal-container {
+    display: grid;
+    width: calc(100vw - 120px);
+	max-width: 1400px;
+    grid-template-columns: 50% 40%;
+    grid-gap: 60px;
+    position: relative;
+    
+    #absolute-logo {
+        position: absolute;
+        top: -100px;
+        left: 0;
+    }
+}
+
+#revive-total-basket {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    
+    #revive-total-basket-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        border: 1px solid #D5DBDB;
+        background-color: #F6F6F6;
+        padding: 20px;
+        
+        h1 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 300px;
+            margin: 10px 0;
+        }
+
+        #revive-value-price1,
+        #revive-value-price2,
+        #revive-value-price3{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            min-width: 300px;
+
+            span {
+                color: #566573;
+
+                &:first-child {
+                    margin-right: 20px;
+                }
+
+                &.bold {
+                    font-weight: bold;
+                    color: #000;
+                }
+
+                &.bolder {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    color: #000;
+                }
+            }
+        }
+
+        #revive-divider {
+            display: block;
+            width: 100%;
+            height: 1px;
+            margin: 20px 0;
+            background-color: #D5DBDB;
+        }
+
+    }
+}

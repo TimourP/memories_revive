@@ -21,4 +21,4 @@ class OrderSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Order
-		fields = ['id', 'lines']
+		fields = ['id', 'lines', 'odoo_id', 'access_token']
