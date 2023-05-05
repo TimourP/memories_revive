@@ -26,8 +26,12 @@ SECRET_KEY = 'django-insecure-+kef2fd+zwwc1jk&c19w&a7x$wo7v%w6vb-pweo124sy-w1v4=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "api.memoriesrevive.timour.me"]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.timour.me',
+    'http://localhost:8000',
+]
 
 # Application definition
 
