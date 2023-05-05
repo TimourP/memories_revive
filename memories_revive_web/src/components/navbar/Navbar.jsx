@@ -97,7 +97,7 @@ const Navbar = ({basket}) => {
 						</li>
 						<li className='divider'></li>
 						<li>
-							<Link className='shop-link' onMouseEnter={() => setBasketOpen(true)} onMouseLeave={() => setTimeout(() => {setBasketOpen(false)}, 300)} to="/shop/basket">
+							<Link className='shop-link' onMouseEnter={() => setBasketOpen(true)} onClick={() => setBasketOpen(false)} onMouseLeave={() => setTimeout(() => {setBasketOpen(false)}, 300)} to="/shop/basket">
 								{
 									basket.lines && basket.lines.length ? 
 									<span className='abs-count'>

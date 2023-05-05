@@ -32,7 +32,19 @@ class Profile(models.Model):
 				"email": self.email,
 				'country_id': 20,
 			}
+			
 			res = odoo("res.partner", "create", [partner_data])
+
+			user_data = {
+				'name': f"{self.first_name} {self.last_name}",
+				'login': self.email,
+				'email': self.email,
+				'password': "Django07",
+				'partner_id': res,
+			}
+
+			res = odoo("res.users", "create", [user_data])
+
 			self.odoo_id = res
 			super(Profile, self).save(*args, **kwargs)
 		else:
