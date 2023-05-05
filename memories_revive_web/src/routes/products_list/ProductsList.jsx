@@ -5,12 +5,13 @@ import BigTitle from '../../components/main/big_title/BigTitle'
 import { connect } from 'react-redux'
 import { mapDispatchToProps, mapStateToProps } from '../../store/dispatcher'
 import Product from '../../components/main/product/Product'
+import { baseURL } from '../../services/axios'
 
 export const generate_image_full_path = (image) => {
   if (!image.image) {
-    return "http://localhost:8000/media/usable/empty.png"
+    return `${baseURL}/media/usable/empty.png`
   }
-  return `http://localhost:8000${image.image}`
+  return `${baseURL}${image.image}`
 }
 
 const ProductsList = ({products}) => {
