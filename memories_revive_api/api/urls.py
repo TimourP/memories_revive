@@ -11,6 +11,7 @@ urlpatterns = [
 
     #products
     path('products', products_views.products),
+    path('products/<int:odoo_id>', products_views.product),
 
     #auth
     path('auth/login', users_views.login),

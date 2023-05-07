@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// export const baseURL = "http://localhost:8000"
-export const baseURL = "https://api.memoriesrevive.timour.me"
+export const baseURL = "http://localhost:8000"
+//export const baseURL = "https://api.memoriesrevive.timour.me"
 
 const instance = axios.create({
 	baseURL: `${baseURL}/api/`,

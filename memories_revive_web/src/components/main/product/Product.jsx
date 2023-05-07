@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./style.scss"
 import bag from "../../../assets/main/bag.svg"
 import PopupContext from '../../../contexts/PopupContext';
 import { connect } from 'react-redux';
 import { mapDispatchToProps } from '../../../store/dispatcher'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Product = ({product, addToBasket, fetchBasket}) => {
 
   const [loading, setLoading] = useState(false);
   const { setJustAdd } = useContext(PopupContext)
+  const click_inside = useRef(false);
+  const navigate = useNavigate()
 
   const add_to_basket = async () => {
     if (loading) {
@@ -30,7 +33,7 @@ const Product = ({product, addToBasket, fetchBasket}) => {
   const description = product.description.length > 70 ? product.description.substring(0, 70) + "..." : product.description
 
   return (
-    <div className='main-product-div'>
+    <div onClick={() => {if (!click_inside.current){navigate(`/shop/${product.id}/${product.title}`)}click_inside.current=false}} className='main-product-div'>
         <img src={product.image}/>
         <div className='product-text'>
             <span className='price'>{product.price}€</span>
@@ -38,7 +41,7 @@ const Product = ({product, addToBasket, fetchBasket}) => {
             <p className='description'>{description}</p>
             <div onClick={add_to_basket} className={`add-basket-btn ${loading ? "loading" : ""}`}>
               <img src={bag} />
-              <span>Ajouter au panier</span>
+              <span onClick={() => click_inside.current = true}>Ajouter au panier</span>
             </div>
         </div>
     </div>
