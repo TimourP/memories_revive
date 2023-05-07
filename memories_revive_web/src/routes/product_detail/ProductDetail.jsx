@@ -50,6 +50,13 @@ const ProductSectionLoading = () => {
                             <Skeleton variant='text' />
                         </div>
                     </div>
+                    <div className='sq-others'>
+                        <Skeleton variant='text' />
+                        <Skeleton variant='text' />
+                        <Skeleton variant='text' />
+                        <Skeleton variant='text' />
+                        <Skeleton variant='rectangle' />
+                    </div>
                 </div>
             </div>
         </section>
