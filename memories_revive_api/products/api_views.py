@@ -5,6 +5,7 @@ from rest_framework import status
 from django.http.response import JsonResponse
 from .serializers import ProductVariantSerializer, ProductVariantFullSerializer, AttributeSerializer
 from .models import Product, ProductVariant
+import time
 
 @api_view(["GET"])
 def products(request):

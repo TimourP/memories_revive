@@ -39,53 +39,59 @@
             max-height: 50px;
         }
     }
+}
 
-    .add-basket-btn {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        position: relative;
-        cursor: pointer;
-        width: fit-content;
-        margin-bottom: 10px;
+.add-basket-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 10px;
 
-        img {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
+    img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
 
+    span {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    &.loading {
+        cursor: not-allowed;
         span {
-            font-weight: bold;
-            text-transform: uppercase;
+            color: var(--secondary_text);
         }
-
-        &.loading {
-            cursor: not-allowed;
-            span {
-                color: var(--secondary_text);
-            }
-            &::before {
-                width: calc(100% + 10px);
-            }
-        }
-
         &::before {
-            content: "";
-            position: absolute;
-            width: calc(100% - 30px);
-            height: 100%;
-            transform: translateY(10px);
-            z-index: -1;
-            background-color: var(--main_grey);
-            transition: .3s;
+            width: calc(100% + 10px);
         }
+    }
 
-        &:hover {
-            &::before {
-                width: calc(100% + 10px);
-            }
+    &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% - 30px);
+        height: 100%;
+        transform: translateY(10px);
+        z-index: -1;
+        background-color: var(--main_grey);
+        transition: .3s;
+    }
+
+    &.primary {
+        &::before {
+            background-color: var(--primary);
+        }
+    }
+
+    &:hover {
+        &::before {
+            width: calc(100% + 10px);
         }
     }
 }
