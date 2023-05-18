@@ -68,7 +68,7 @@ const Customise = ({addToBasket, fetchBasket}) => {
                     <img src={models[frame.model].image} />
                 </div>
                 <div className='price-container'>
-                    <span className="price">{637}€</span>
+                    <span className="price">{models[frame.model].price + frame_selector[frame.frame].price}€</span>
                     <span>TVAC</span>
                 </div>
                 <div className="legal-container">

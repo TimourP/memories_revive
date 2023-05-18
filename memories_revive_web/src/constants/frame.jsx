@@ -23,6 +23,7 @@ export const models = [
         key: "porsche-911-turbo",
         brand: "Porsche",
         model: "911 Turbo",
+        price: 890,
         image: porsche_911_turbo
     },
     {
@@ -30,6 +31,7 @@ export const models = [
         key: "porsche-911-gt3rs",
         brand: "Porsche",
         model: "GT3 RS",
+        price: 915,
         image: porsche_911_gt3rs
     },
     {
@@ -37,6 +39,7 @@ export const models = [
         key: "porsche-991-gt3",
         brand: "Porsche",
         model: "911 GT3",
+        price: 900,
         image: porsche_991_gt3
     },
     {
@@ -44,6 +47,7 @@ export const models = [
         key: "porsche-911-turbo-s",
         brand: "Porsche",
         model: "911 Turbo S",
+        price: 850,
         image: porsche_911_turbo_s
     },
 ]
@@ -52,17 +56,21 @@ export const frame_selector = [
     {
         title: "Acier blanc",
         color: "#fff",
+        price: 20,
     },
     {
         title: "Acien anthracite",
         color: "#292929",
+        price: 32,
     },
     {
         title: "Marbre blanc",
         image: white_marble,
+        price: 130,
     },
     {
         title: "Marbre noir",
+        price: 180,
         image: black_marble
     },
 ]
