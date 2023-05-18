@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import "./style.scss"
 import { Link } from 'react-router-dom'
 import CircularSelector from '../../frames/circular_selector/CircularSelector'
-import { frame_selector, style_selector } from '../../../constants/frame'
+import { frame_selector, models, style_selector } from '../../../constants/frame'
 import CustomisationContext from '../../../contexts/CustomisationContext'
 import Render from '../../frames/render/Render'
 import full_picture from "../../../assets/home/porsche-model-1.png"
@@ -53,10 +53,10 @@ const Hero = () => {
           </div>
           <div className='car-container'>
             <div className='name-pointer'>
-                <span className='title'>Porsche</span>
-                <span className='choice'>911 Turbo</span>
+                <span className='title'>{models[frame.model].brand}</span>
+                <span className='choice'>{models[frame.model].model}</span>
             </div>
-            <img src={full_picture} className="car-full-pic" />
+            <img src={models[frame.model].image} className="car-full-pic" />
             <div className='product-headlines'>
               <div className='top-data'>
                 <div className='data'>

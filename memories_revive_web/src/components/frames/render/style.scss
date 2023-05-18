@@ -127,6 +127,44 @@
             width: var(--frame_width);
             height: var(--frame_height);
             background-color: var(--main_grey);
+            transition: .3s;
+
+            background-image: url("../../../assets/frame/car/porsche-911-turbo.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+
+            &.porsche-911-turbo {
+                background-image: url("../../../assets/frame/car/porsche-911-turbo.png");
+
+                &.type-1 {
+                    background-image: url("../../../assets/frame/car/porsche-911-turbo-dark.png");
+                }
+            }
+            
+            &.porsche-911-gt3rs {
+                background-image: url("../../../assets/frame/car/porsche-911-gt3rs.png");
+
+                &.type-1 {
+                    background-image: url("../../../assets/frame/car/porsche-911-gt3rs-dark.png");
+                }
+            }
+
+            &.porsche-991-gt3 {
+                background-image: url("../../../assets/frame/car/porsche-991-gt3.png");
+
+                &.type-1 {
+                    background-image: url("../../../assets/frame/car/porsche-991-gt3-dark.png");
+                }
+            }
+
+            &.porsche-911-turbo-s {
+                background-image: url("../../../assets/frame/car/porsche-911-turbo-s.png");
+
+                &.type-1 {
+                    background-image: url("../../../assets/frame/car/porsche-911-turbo-s-dark.png");
+                }
+            }
         }
     }
 }

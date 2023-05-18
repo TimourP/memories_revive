@@ -6,7 +6,7 @@ const CustomisationContext = createContext();
 export const CustomisationProvider = (props) => {
 
 	const [frame, setFrame] = useState({
-        model: "",
+        model: 0,
 		style: 0,
 		frame: 3,
     })

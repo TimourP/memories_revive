@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import "./style.scss"
 import black_marble from "../../../assets/frame/marbre-noir.jpg"
 import CustomisationContext from '../../../contexts/CustomisationContext'
-import { frame_selector, style_selector } from '../../../constants/frame'
+import { frame_selector, models, style_selector } from '../../../constants/frame'
 
 const Frame = () => {
     const {frame} = useContext(CustomisationContext);
 
     return (
-        <div className='frame' style={{backgroundColor: style_selector[frame.style].color}}>
+        <div className={`frame type-${frame.style} ${models[frame.model].key}`} style={{backgroundColor: style_selector[frame.style].color}}>
 
         </div>
     )
