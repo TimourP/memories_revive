@@ -18,7 +18,7 @@ import Career from './routes/career/Career';
 import Checkout from './routes/checkout/Checkout';
 import Product from './routes/product_detail/ProductDetail';
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/*",
     element: <Root />,
