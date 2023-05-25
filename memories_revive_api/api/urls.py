@@ -17,6 +17,7 @@ urlpatterns = [
     #auth
     path('auth/login', users_views.login),
     path('auth/register', users_views.register),
+    path('auth/guest', users_views.guest),
 
     #me
     path('me/profile', users_views.profile),

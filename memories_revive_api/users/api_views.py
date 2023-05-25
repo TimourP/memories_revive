@@ -9,6 +9,12 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from .models import Profile
+import random
+import string
+
+def generate_random_string(length):
+    letters = string.ascii_letters
+    return ''.join(random.choice(letters) for _ in range(length))
 
 @api_view(["POST"])
 @check_json(err_message="json object is required")
@@ -78,3 +84,24 @@ def register(request, data):
 			email=login_data["email"],
 		)
 		return JsonResponse("ok", safe=False, status=status.HTTP_200_OK)
+	
+@api_view(["POST"])
+def guest(request):
+	if request.method == "POST":
+		user_name = generate_random_string(32)
+		user = User.objects.create(
+			first_name="guest",
+			last_name="user",
+			email=f"{user_name}@memoriesrevive.com",
+			username=user_name,
+			password="hello"
+		)
+		user.save()
+		t = Token.objects.create(user=user)
+		p = Profile.objects.create(
+			user=user,
+			first_name="guest",
+			last_name="user",
+			email=f"{user_name}@memoriesrevive.com",
+		)
+		return JsonResponse(t.key, safe=False, status=status.HTTP_200_OK)
