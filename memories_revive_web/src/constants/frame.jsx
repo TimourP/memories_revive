@@ -6,6 +6,7 @@ import porsche_911_turbo from "../assets/frame/models/porsche-911-turbo-model.pn
 import porsche_911_turbo_s from "../assets/frame/models/porsche-911-turbo-s-model.png";
 import porsche_991_gt3 from "../assets/frame/models/porsche-991-gt3-model.png";
 import porsche_911_gt3rs from "../assets/frame/models/porsche-911-gt3rs-model.png";
+import porsche_911_turbo_grey from "../assets/frame/models/porsche-911-turbo-grey-model.png";
 
 export const style_selector = [
 	{
@@ -33,7 +34,7 @@ export const models = [
 		brand: "Porsche",
 		model: "911 Turbo Grise",
 		price: 890,
-		image: porsche_911_turbo,
+		image: porsche_911_turbo_grey,
 	},
 	{
 		name: "Porsche 911 GT3RS",

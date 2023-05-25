@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "../../../store/dispatcher";
 import PopupContext from "../../../contexts/PopupContext";
 import axios from "../../../services/axios";
+import { generate_image_full_path } from "../../../routes/products_list/ProductsList";
 
 const variant_by_odoo_id = {
 	style: [28, 29],
@@ -39,18 +40,19 @@ const Customise = ({ addToBasket, fetchBasket }) => {
 			.catch((e) => null);
 		if (ret) {
 			setMainProduct(ret);
-			get_current_variant();
+			get_current_variant(ret);
 		}
 	};
 
-	const get_current_variant = () => {
-		if (!mainProduct) {
+	const get_current_variant = (product = null) => {
+		if (!product && !mainProduct) {
 			return;
 		}
 		const style_odoo = variant_by_odoo_id.style[frame.style];
 		const frame_odoo = variant_by_odoo_id.frame[frame.frame];
 		const model_odoo = variant_by_odoo_id.model[frame.model];
-		const current_product = mainProduct.variants.filter((e) => {
+		const list = product ? product : mainProduct;
+		const current_product = list.variants.filter((e) => {
 			if (
 				e.attributes_values.filter((v) => v.odoo_id == style_odoo)
 					.length == 0
@@ -176,7 +178,13 @@ const Customise = ({ addToBasket, fetchBasket }) => {
 				</div>
 				<div
 					onClick={() =>
-						add_to_basket({ image: "", title: "", id: 12 })
+						add_to_basket({
+							image: generate_image_full_path(
+								variant ? variant.images[0] : {}
+							),
+							title: mainProduct.name,
+							id: variant.odoo_id,
+						})
 					}
 					className={`primary add-basket-btn ${
 						loading ? "loading" : ""

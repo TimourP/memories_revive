@@ -18,7 +18,7 @@ const move_with_mouse = (e) => {
 	const current_scroll =
 		document.documentElement.scrollTop || document.body.scrollTop;
 	let start_x = e.pageX - main_frame.left;
-	let start_y = e.pageY - main_frame.top;
+	let start_y = e.pageY - main_frame.top - current_scroll;
 	if (start_x < 0) start_x = 0;
 	else if (start_x > width) start_x = width;
 	else if (start_y < 0) start_y = 0;
@@ -85,6 +85,7 @@ const Render = ({ is_home }) => {
 	const { frame, set_frame } = useContext(CustomisationContext);
 
 	useEffect(() => {
+		if (is_home) return;
 		const main_view = document.getElementById("main-customizer");
 		const main_frame = document.getElementById("main-frame");
 		main_view.addEventListener("mousemove", move_with_mouse);
@@ -118,7 +119,7 @@ const Render = ({ is_home }) => {
 			</div>
 			<div id="main-customizer">
 				<Frame is_from_zoom={false} />
-				<Frame is_from_zoom={true} />
+				{!is_home ? <Frame is_from_zoom={true} /> : null}
 			</div>
 		</div>
 	);

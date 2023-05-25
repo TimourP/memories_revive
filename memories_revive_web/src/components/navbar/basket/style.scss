@@ -1,159 +1,164 @@
-
-
 #basket {
-    display: flex;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    padding-top: 10px;
-    transition: .3s;
-    pointer-events: none;
-    opacity: 0;
+	display: flex;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	padding-top: 10px;
+	transition: 0.3s;
+	pointer-events: none;
+	opacity: 0;
 
-    &:hover {
-        opacity: 1;
-        display: flex;
-        pointer-events: all;
-    }
+	&:hover {
+		opacity: 1;
+		display: flex;
+		pointer-events: all;
+	}
 
-    &.active {
-        display: flex;
-        opacity: 1;
-        pointer-events: all;
-    }
+	&.active {
+		display: flex;
+		opacity: 1;
+		pointer-events: all;
+	}
 
-    .basket-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        background-color: #F6F6F6;
-        box-shadow: var(--box_shadow);
-        padding: 10px;
-        min-width: 400px;
+	.empty-basket {
+		display: flex;
+		padding: 10px 6px;
 
-        .basket-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
+		span {
+			font-size: 1rem;
+		}
+	}
 
-            span {
-                font-size: 1.4rem;
-            }
-        }
+	.basket-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		background-color: #f6f6f6;
+		box-shadow: var(--box_shadow);
+		padding: 10px;
+		min-width: 400px;
 
-        .base-button {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1E1E1E;
-            cursor: pointer;
-            
-            span {
-                color: #fff;
-                padding: 10px 0;
-            }
-        }
+		.basket-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
 
-        .table-container {
-            max-height: 60vh;
-            overflow-y: scroll;
-            margin: 20px 0;
-        }
+			span {
+				font-size: 1.4rem;
+			}
+		}
 
-        table {
-            width: 100%;
-            width: 100%;
-            position: static;
-            border-collapse: collapse;
+		.base-button {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #1e1e1e;
+			cursor: pointer;
 
-            thead {
-                position: sticky;
-                top: 0;
-                background-color: #F6F6F6;
-                th {
-                    font-size: .7rem;
-                    color: var(--secondary_text);
-                }
-            }
+			span {
+				color: #fff;
+				padding: 10px 0;
+			}
+		}
 
-            tbody {
-                width: 100%;
+		.table-container {
+			max-height: 60vh;
+			overflow-y: scroll;
+			margin: 20px 0;
+		}
 
-                tr {
-                    width: 100%;
-                    td {
-                        
-                        width: 50px;
-                        padding: 10px 0;
+		table {
+			width: 100%;
+			width: 100%;
+			position: static;
+			border-collapse: collapse;
 
-                        svg {
-                            font-size: 1.2rem;
-                            cursor: pointer;
-                        }
+			thead {
+				position: sticky;
+				top: 0;
+				background-color: #f6f6f6;
+				th {
+					font-size: 0.7rem;
+					color: var(--secondary_text);
+				}
+			}
 
-                        &.center {
-                            width: calc(100% - 100px);
-                        }
+			tbody {
+				width: 100%;
 
-                        .basket-line-item {
-                            display: flex;
-                            flex-direction: row;
-                            width: 100%;
-        
-                            img {
-                                width: 96px;
-                                height: 96px;
-                                object-fit: cover;
-                                object-position: center;
-                                box-shadow: var(--box_shadow);
-                            }
+				tr {
+					width: 100%;
+					td {
+						width: 50px;
+						padding: 10px 0;
 
-                            .basket-text {
-                                display: flex;
-                                flex-direction: column;
-                                padding: 0 10px;
-                                max-width: 250px;
+						svg {
+							font-size: 1.2rem;
+							cursor: pointer;
+						}
 
-                                .title {
-                                    font-size: .9rem;
-                                }
+						&.center {
+							width: calc(100% - 100px);
+						}
 
-                                .price {
-                                    text-decoration: underline;
-                                    font-size: .9rem;
-                                }
+						.basket-line-item {
+							display: flex;
+							flex-direction: row;
+							width: 100%;
 
-                                .attribute-div {
-                                    display: flex;
-                                    flex-direction: column;
-                                    padding-left: 10px;
-                                    padding-top: 10px;
+							img {
+								width: 96px;
+								height: 96px;
+								object-fit: cover;
+								object-position: center;
+								box-shadow: var(--box_shadow);
+							}
 
-                                    .attribute {
-                                        display: flex;
-                                        flex-direction: row;
-                                        align-items: flex-start;
-                                        justify-content: flex-start;
+							.basket-text {
+								display: flex;
+								flex-direction: column;
+								padding: 0 10px;
+								max-width: 250px;
 
-                                        span {
-                                            font-size: .7rem;
+								.title {
+									font-size: 0.9rem;
+								}
 
-                                            &:first-child {
-                                                font-weight: bold;
-                                                margin-right: 5px;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+								.price {
+									text-decoration: underline;
+									font-size: 0.9rem;
+								}
 
-                    }
-                }
-            }
-        }
-    }
+								.attribute-div {
+									display: flex;
+									flex-direction: column;
+									padding-left: 10px;
+									padding-top: 10px;
+
+									.attribute {
+										display: flex;
+										flex-direction: row;
+										align-items: flex-start;
+										justify-content: flex-start;
+
+										span {
+											font-size: 0.7rem;
+
+											&:first-child {
+												font-weight: bold;
+												margin-right: 5px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

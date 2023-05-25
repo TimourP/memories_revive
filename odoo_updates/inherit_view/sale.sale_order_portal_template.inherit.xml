@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div id="revive-modal-container-section">
                     <div id="revive-modal-container">
-                        <img src="https://memoriesrevive.timour.me/favicon.ico" id="absolute-logo" />
+                        <img src="https://memoriesrevive.timour.me/favicon.ico" id="absolute-logo"/>
                         <main class="modal-body" id="sign-dialog">
                             <div t-if="providers or tokens" id="payment_method" class="text-start">
                                 <h3 class="mb24">Pay with</h3>
@@ -17,20 +17,20 @@
                             </div>
                         </main>
                         <div id="revive-total-basket">
-                            <div id='revive-total-basket-content'>
+                            <div id="revive-total-basket-content">
                                 <h1>Total</h1>
-                                <div id='revive-value-price1'>
-                                    <span className='title bold'>Sous total (4 articles)</span>
-                                    <span>264,74 €</span>
+                                <div id="revive-value-price1">
+                                    <span class="title bold">Sous total (4 articles)</span>
+                                    <span t-field="sale_order.amount_total" data-id="total_amount_new_e"/>
                                 </div>
-                                <div id='revive-value-price2'>
-                                    <span className='title'>Taxes</span>
+                                <div id="revive-value-price2">
+                                    <span class="title">Taxes</span>
                                     <span>Tous les prix incluent la TVA</span>
                                 </div>
-                                <span id='revive-divider'></span>
-                                <div id='revive-value-price3'>
-                                    <span className='title bolder'>Total</span>
-                                    <span className='title bolder'>264,74 €</span>
+                                <span id="revive-divider"/>
+                                <div id="revive-value-price3">
+                                    <span class="title bolder">Total</span>
+                                    <span t-field="sale_order.amount_total" data-id="total_amount_new" class="title bolder"/>
                                 </div>
                             </div>
                         </div>
