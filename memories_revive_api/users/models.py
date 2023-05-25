@@ -21,31 +21,36 @@ class Profile(models.Model):
 	billing_address_address_l2 = models.CharField(max_length=100, blank=True)
 	billing_address_postal_code = models.CharField(max_length=100, blank=True)
 	billing_address_city = models.CharField(max_length=100, blank=True)
+
+	is_guest = models.BooleanField(default=False)
 	
 	def save(self, *args, **kwargs):
 		if not self.pk:
 			# This code only happens if the objects is
 			# not in the database yet. Otherwise it would
 			# have pk
-			partner_data = {
-				'name': f"{self.first_name} {self.last_name}",
-				"email": self.email,
-				'country_id': 20,
-			}
-			
-			res = odoo("res.partner", "create", [partner_data])
+			if not self.is_guest:
+				partner_data = {
+					'name': f"{self.first_name} {self.last_name}",
+					"email": self.email,
+					'country_id': 20,
+				}
+				
+				res = odoo("res.partner", "create", [partner_data])
 
-			user_data = {
-				'name': f"{self.first_name} {self.last_name}",
-				'login': self.email,
-				'email': self.email,
-				'password': "Django07",
-				'partner_id': res,
-			}
+				user_data = {
+					'name': f"{self.first_name} {self.last_name}",
+					'login': self.email,
+					'email': self.email,
+					'password': "Django07",
+					'partner_id': res,
+				}
 
-			res = odoo("res.users", "create", [user_data])
+				res = odoo("res.users", "create", [user_data])
 
-			self.odoo_id = res
+				self.odoo_id = res
+			else:
+				self.odoo_id = 4
 			super(Profile, self).save(*args, **kwargs)
 		else:
 			super(Profile, self).save(*args, **kwargs)

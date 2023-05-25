@@ -13,7 +13,7 @@ import json
 @permission_classes([IsAuthenticated])
 def basket(request):
 	if request.method == "GET":
-		open_order = Order.objects.filter(state="draft")
+		open_order = Order.objects.filter(state="draft", profile=request.user.profile)
 		if open_order.exists():
 			open_order = open_order.first()
 		else:
@@ -26,14 +26,12 @@ def basket(request):
 @permission_classes([IsAuthenticated])
 def promo_code(request):
 	if request.method == "POST":
-		open_order = Order.objects.filter(state="draft")
+		open_order = Order.objects.filter(state="draft", profile=request.user.profile)
 		if open_order.exists():
 			open_order = open_order.first()
 		else:
 			return JsonResponse({"detail": "no open basket"}, safe=False, status=status.HTTP_404_NOT_FOUND)
 		res = odoo("payment.link.wizard", "search_read", [])
-
-		print(json.dumps(res, indent=4))
 		return JsonResponse("ok", safe=False, status=status.HTTP_200_OK)
 
 
@@ -48,7 +46,7 @@ def product_to_basket(request, product_id):
 			return JsonResponse({"detail": "product does't exist"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
 		product = product.first()
 
-		open_order = Order.objects.filter(state="draft")
+		open_order = Order.objects.filter(state="draft", profile=request.user.profile)
 		if open_order.exists():
 			open_order = open_order.first()
 		else:
@@ -69,7 +67,7 @@ def product_to_basket(request, product_id):
 			return JsonResponse({"detail": "product does't exist"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
 		product = product.first()
 
-		open_order = Order.objects.filter(state="draft")
+		open_order = Order.objects.filter(state="draft", profile=request.user.profile)
 		if open_order.exists():
 			open_order = open_order.first()
 		else:
