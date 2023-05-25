@@ -12,7 +12,7 @@ import json
 def products(request):
 	if request.method == "POST":
 
-		odoo_products = odoo("product.template", "search_read", [[["sale_ok", "=", True]]], {"fields": 
+		odoo_products = odoo("product.template", "search_read", [[["sale_ok", "=", True], ["is_published", "=", True]]], {"fields": 
 							       [
 								       "active", 
 									   "base_unit_price", 
@@ -21,11 +21,9 @@ def products(request):
 									   "display_name",
 									   "list_price",
 									   "name",
-									   "produce_delay",
 									   "product_tooltip",
 									   "type",
 									   "purchase_ok",
-									   "is_published",
 									   "sale_ok",
 									   "qty_available",
 									   "rating_avg",
@@ -67,7 +65,6 @@ def products(request):
 				existing.name = product["name"]
 				existing.name_fr = french_data["name"]
 
-				existing.produce_delay = product["produce_delay"]
 				existing.product_tooltip = product["product_tooltip"]
 				existing.product_type = product["type"]
 				existing.purchase_ok = product["purchase_ok"]
@@ -89,7 +86,6 @@ def products(request):
 					list_price=product["list_price"], 
 					name=product["name"],
 					name_fr=french_data["name"],
-					produce_delay=product["produce_delay"], 
 					product_tooltip=product["product_tooltip"], 
 					product_type=product["type"], 
 					purchase_ok=product["purchase_ok"], 

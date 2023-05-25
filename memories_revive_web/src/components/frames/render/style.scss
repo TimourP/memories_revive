@@ -1,170 +1,203 @@
-
-
 #render-frame {
-    --frame_width: calc(50vw - 60px);
-    --frame_height: calc(25vw - 30px);
-    --border_width: 8px;
+	--frame_width: calc(50vw - 60px);
+	--frame_height: calc(25vw - 30px);
+	--border_width: 8px;
 
-    &.home {
-        --frame_width: calc(40vw - 60px);
-        --frame_height: calc(20vw - 30px);
-        --border_width: 6px;
-    }
+	&.home {
+		--frame_width: calc(40vw - 60px);
+		--frame_height: calc(20vw - 30px);
+		--border_width: 6px;
+	}
 
-    @media screen and (min-width: 1520px){
-        --frame_width: 700px;
-        --frame_height: 350px;
+	@media screen and (min-width: 1520px) {
+		--frame_width: 700px;
+		--frame_height: 350px;
 
-        &.home {
-            --frame_width: 548px;
-            --frame_height: 274px;
-        }
-    }
+		&.home {
+			--frame_width: 548px;
+			--frame_height: 274px;
+		}
+	}
 
-    @media screen and (max-width: 1120px){
+	@media screen and (max-width: 1120px) {
+		&.home {
+			--frame_width: 388px;
+			--frame_height: 194px;
+		}
+	}
 
-        &.home {
-            --frame_width: 388px;
-            --frame_height: 194px;
-        }
-    }
+	width: fit-content;
 
-    width: fit-content;
+	.frame-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding-left: 40px;
+		padding-bottom: 20px;
 
-    .frame-header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 40px;
-        padding-bottom: 20px;
+		.pointer-container > * + * {
+			margin-left: 40px;
+		}
 
-        .pointer-container > * + * { margin-left: 40px;}
+		.pointer-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			position: relative;
 
-        .pointer-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            position: relative;
+			.pointer {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				min-width: 150px;
 
-            .pointer {
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                min-width: 150px;
-    
-                .title {
-                    font-weight: bold;
-                    font-size: 1rem;
-                    font-style: italic;
-                }
-        
-                .choice {
-                    color: var(--secondary_text);
-                    font-weight: 300;
-                    font-style: italic;
-                }
-    
-                &::after {
-                    content: "";
-                    position: absolute;
-                    bottom: -25px;
-                    left: 40px;
-                    background-color: #9D9D9D;
-                    display: block;
-                    width: 1px;
-                    z-index: 10;
-                    height: 20px;
-                }
-    
-                &::before {
-                    content: "";
-                    position: absolute;
-                    bottom: -25px;
-                    left: 40px;
-                    background-color: #9D9D9D;
-                    display: block;
-                    width: 7px;
-                    height: 7px;
-                    border-radius: 4px;
-                    z-index: 10;
-                    transform: translateX(-3px) translateY(50%);
-                }
+				.title {
+					font-weight: bold;
+					font-size: 1rem;
+					font-style: italic;
+				}
 
-                &.style {
-                    &::after {
-                        height: 50px;
-                        bottom: -55px;
-                        left: 30px;
-                    }
-        
-                    &::before {
-                        bottom: -55px;
-                        left: 30px;
-                    }
-                }
-            }
-            }
-    }
+				.choice {
+					color: var(--secondary_text);
+					font-weight: 300;
+					font-style: italic;
+				}
 
-    .frame-content {
-        position: relative;
-        padding: var(--border_width);
-        width: fit-content;
-        box-shadow: 0 8px 12px rgba($color: #000000, $alpha: .3);
+				&::after {
+					content: "";
+					position: absolute;
+					bottom: -25px;
+					left: 40px;
+					background-color: #9d9d9d;
+					display: block;
+					width: 1px;
+					z-index: 10;
+					height: 20px;
+				}
 
-        .background {
-            position: absolute;
-            display: block;
-            top: 0;
-            left: 0;
-            width: calc(var(--frame_width) + var(--border_width) * 2);
-            height: calc(var(--frame_height) + var(--border_width) * 2);
-            z-index: -1;
-        }
-    
-        .frame {
-            width: var(--frame_width);
-            height: var(--frame_height);
-            background-color: var(--main_grey);
-            transition: .3s;
+				&::before {
+					content: "";
+					position: absolute;
+					bottom: -25px;
+					left: 40px;
+					background-color: #9d9d9d;
+					display: block;
+					width: 7px;
+					height: 7px;
+					border-radius: 4px;
+					z-index: 10;
+					transform: translateX(-3px) translateY(50%);
+				}
 
-            background-image: url("../../../assets/frame/car/porsche-911-turbo.png");
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
+				&.style {
+					&::after {
+						height: 50px;
+						bottom: -55px;
+						left: 30px;
+					}
 
-            &.porsche-911-turbo {
-                background-image: url("../../../assets/frame/car/porsche-911-turbo.png");
+					&::before {
+						bottom: -55px;
+						left: 30px;
+					}
+				}
+			}
+		}
+	}
 
-                &.type-1 {
-                    background-image: url("../../../assets/frame/car/porsche-911-turbo-dark.png");
-                }
-            }
-            
-            &.porsche-911-gt3rs {
-                background-image: url("../../../assets/frame/car/porsche-911-gt3rs.png");
+	.main-frame {
+		overflow: hidden;
+		.frame-content {
+			position: relative;
+			padding: var(--border_width);
+			width: fit-content;
+			box-shadow: 0 8px 12px rgba($color: #000000, $alpha: 0.3);
+			overflow: hidden;
 
-                &.type-1 {
-                    background-image: url("../../../assets/frame/car/porsche-911-gt3rs-dark.png");
-                }
-            }
+			.background {
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				width: calc(var(--frame_width) + var(--border_width) * 2);
+				height: calc(var(--frame_height) + var(--border_width) * 2);
+				z-index: -1;
+			}
 
-            &.porsche-991-gt3 {
-                background-image: url("../../../assets/frame/car/porsche-991-gt3.png");
+			.frame {
+				width: var(--frame_width);
+				height: var(--frame_height);
+				background-color: var(--main_grey);
+				transition: 0.3s;
 
-                &.type-1 {
-                    background-image: url("../../../assets/frame/car/porsche-991-gt3-dark.png");
-                }
-            }
+				background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo.webp");
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: cover;
 
-            &.porsche-911-turbo-s {
-                background-image: url("../../../assets/frame/car/porsche-911-turbo-s.png");
+				&.porsche-911-turbo {
+					background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo.webp");
 
-                &.type-1 {
-                    background-image: url("../../../assets/frame/car/porsche-911-turbo-s-dark.png");
-                }
-            }
-        }
-    }
+					&.type-1 {
+						background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo-dark.webp");
+					}
+				}
+
+				&.porsche-911-gt3rs {
+					background-image: url("../../../assets/frame/frame-variant/porsche-911-gt3rs.webp");
+
+					&.type-1 {
+						background-image: url("../../../assets/frame/frame-variant/porsche-911-gt3rs-dark.webp");
+					}
+				}
+
+				&.porsche-991-gt3 {
+					background-image: url("../../../assets/frame/frame-variant/porsche-991-gt3.webp");
+
+					&.type-1 {
+						background-image: url("../../../assets/frame/frame-variant/porsche-991-gt3-dark.webp");
+					}
+				}
+
+				&.porsche-911-turbo-s {
+					background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo-s.webp");
+
+					&.type-1 {
+						background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo-s-dark.webp");
+					}
+				}
+
+				&.porsche-911-turbo-grey {
+					background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo-s.webp");
+
+					&.type-1 {
+						background-image: url("../../../assets/frame/frame-variant/porsche-911-turbo-s-dark.webp");
+					}
+				}
+			}
+		}
+
+		&.absolute {
+			position: fixed;
+			width: 200px;
+			height: 200px;
+			z-index: 1000;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			border-radius: 100px;
+			box-shadow: 0 4px 8px rgba($color: #000000, $alpha: 0.4);
+
+			&.hide {
+				opacity: 0;
+				transition: 0.2s;
+			}
+
+			.frame-content {
+				transform: scale(2);
+				transform-origin: 0 0;
+			}
+		}
+	}
 }

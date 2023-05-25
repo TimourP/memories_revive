@@ -19,7 +19,6 @@ class Product(models.Model):
 	list_price = models.FloatField()
 	name = models.TextField()
 	name_fr = models.TextField(null=True, blank=True)
-	produce_delay = models.FloatField()
 	product_tooltip = models.TextField()
 	product_type = models.CharField(max_length=128, default="")
 
