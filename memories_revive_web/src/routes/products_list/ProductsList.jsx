@@ -36,7 +36,9 @@ const ProductsList = ({ products }) => {
 							title: elem.name,
 							id: elem.variants[0].odoo_id,
 							description: elem.description,
-							price: elem.variants[0].list_price.toFixed(2),
+							price: (elem.variants[0].list_price * 1.21).toFixed(
+								2
+							),
 							image: generate_image_full_path(
 								elem.variants[0].images[0]
 							),

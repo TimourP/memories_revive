@@ -80,6 +80,12 @@ const Login = () => {
 								<label htmlFor="email-input">Email</label>
 								<input
 									defaultValue={logData.email}
+									onChange={(e) =>
+										setLogData({
+											...logData,
+											email: e.target.value,
+										})
+									}
 									placeholder="Entrez votre email"
 									id="email-input"
 									type="email"
@@ -115,6 +121,12 @@ const Login = () => {
 									Mot de passe
 								</label>
 								<input
+									onChange={(e) =>
+										setLogData({
+											...logData,
+											password: e.target.value,
+										})
+									}
 									defaultValue={logData.password}
 									placeholder="Entrez votre mot de passe"
 									id="password-input"

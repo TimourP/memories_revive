@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { mapDispatchToProps, mapStateToProps } from "../../../store/dispatcher";
+import AuthContext from "../../../contexts/AuthContext";
 
 const TotalBasket = ({ basket, promo_code }) => {
+	const { setNeedLog, is_login } = useContext(AuthContext);
+
 	const products = basket.lines ? basket.lines : [];
 	let total = 0;
 
@@ -44,9 +47,21 @@ const TotalBasket = ({ basket, promo_code }) => {
 						<p>
 							Appliquer le code de réduction au moment du paiement
 						</p>
-						<Link to="/shop/checkout" className="secondary-button">
-							Passer commande
-						</Link>
+						{!is_login() ? (
+							<Link
+								onClick={() => setNeedLog(true)}
+								className="secondary-button"
+							>
+								Se connecter ou créer un compte
+							</Link>
+						) : (
+							<Link
+								to="/shop/checkout"
+								className="secondary-button"
+							>
+								Passer commande
+							</Link>
+						)}
 					</>
 				)}
 			</div>
