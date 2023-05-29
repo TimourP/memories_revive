@@ -66,9 +66,11 @@ const Basket = ({ basketOpen, basket, removeFromBasket, fetchBasket }) => {
 															}
 														</span>
 														<span className="price">
-															{elem.product.list_price.toFixed(
-																2
-															)}
+															{(
+																elem.product
+																	.list_price *
+																1.21
+															).toFixed(2)}
 														</span>
 														<div className="attribute-div">
 															{elem.product.attributes_values.map(

@@ -52,10 +52,10 @@ def login(request, data):
 		valid = check_dict_values_type(login_data, [str, str, str], [False, False, True])
 		if not valid[0]:
 			return JsonResponse({"detail": valid[1]}, safe=False, status=status.HTTP_400_BAD_REQUEST)
-		user = authenticate(username=login_data["email"], password=login_data["password"])
-		token, created = Token.objects.get_or_create(user=user)
+		user = authenticate(username=login_data["email"], password=login_data["password"])		
 
 		if user is not None:
+			token, created = Token.objects.get_or_create(user=user)
 			check_previous_user(login_data["token"], user)
 			return JsonResponse({
 				"user": {

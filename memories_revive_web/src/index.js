@@ -21,6 +21,7 @@ import Cart from "./routes/cart/Cart";
 import Career from "./routes/career/Career";
 import Checkout from "./routes/checkout/Checkout";
 import Product from "./routes/product_detail/ProductDetail";
+import MainMvp from "./routes/still_working/MainMvp";
 
 const router = createBrowserRouter([
 	{
@@ -63,6 +64,34 @@ const router = createBrowserRouter([
 			{
 				path: "career",
 				element: <Career />,
+			},
+			{
+				path: "mvp",
+				element: <MainMvp />,
+			},
+			{
+				path: "conditions-generales",
+				element: <MainMvp />,
+			},
+			{
+				path: "mentions-legales",
+				element: <MainMvp />,
+			},
+			{
+				path: "politique-de-vie-privee",
+				element: <MainMvp />,
+			},
+			{
+				path: "utilisation-des-cookies",
+				element: <MainMvp />,
+			},
+			{
+				path: "garanties",
+				element: <MainMvp />,
+			},
+			{
+				path: "droit-de-retractation",
+				element: <MainMvp />,
 			},
 			{
 				path: "",

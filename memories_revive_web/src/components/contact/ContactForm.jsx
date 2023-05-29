@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ContactForm = () => {
 	return (
-		<div id="contact-.webpm">
+		<div id="contact-form">
 			<h2>Contactez-nous</h2>
 			<form>
 				<div className="input-row">

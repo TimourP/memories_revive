@@ -10,7 +10,7 @@ const TotalBasket = ({ basket, promo_code }) => {
 
 	for (let index = 0; index < products.length; index++) {
 		const product = products[index];
-		total += product.product.list_price;
+		total += product.product.list_price * 1.21;
 	}
 
 	return (
@@ -22,7 +22,7 @@ const TotalBasket = ({ basket, promo_code }) => {
 						Sous total ({products.length} article
 						{products.length > 1 ? "s" : ""})
 					</span>
-					<span>{total} €</span>
+					<span>{total.toFixed(2)} €</span>
 				</div>
 				<div className="value-price">
 					<span className="title">Livraison</span>
@@ -35,7 +35,7 @@ const TotalBasket = ({ basket, promo_code }) => {
 				<span className="divider"></span>
 				<div className="value-price">
 					<span className="title bolder">Total</span>
-					<span className="title bolder">{total} €</span>
+					<span className="title bolder">{total.toFixed(2)} €</span>
 				</div>
 				{promo_code ? (
 					<div></div>

@@ -158,7 +158,10 @@ const Customise = ({ addToBasket, fetchBasket }) => {
 				</div>
 				<div className="price-container">
 					<span className="price">
-						{!variant ? "." : variant.list_price}€
+						{!variant
+							? "."
+							: (variant.list_price * 1.21).toFixed(2)}
+						€
 					</span>
 					<span>TVAC</span>
 				</div>

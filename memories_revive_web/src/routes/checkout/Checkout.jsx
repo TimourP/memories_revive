@@ -8,6 +8,7 @@ import CheckoutDelivery from "../../components/checkout/checkout_delivery/Checko
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../../store/dispatcher";
+import { Link } from "react-router-dom";
 
 const Checkout = ({ basket }) => {
 	const { needHide, setNeedHide } = useContext(AuthContext);
@@ -43,10 +44,17 @@ const Checkout = ({ basket }) => {
 							<CheckoutDelivery />
 						) : null}
 						{step != 1 ? null : (
-							<p className="secure">
-								En procéder au payment vous serez redirigé vers
-								notre page de payment sécurisée.
-							</p>
+							<>
+								<p className="secure">
+									Cette section vous permettra de sélectionner
+									le mode de livraison. Ce projet est un{" "}
+									<Link to="/mvp">MVP</Link>.
+								</p>
+								<p className="secure">
+									En procéder au payment vous serez redirigé
+									vers notre page de payment sécurisée.
+								</p>
+							</>
 						)}
 						<div onClick={next_step} className="secondary-button">
 							<span>
