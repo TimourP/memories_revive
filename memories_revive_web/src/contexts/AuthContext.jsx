@@ -104,7 +104,21 @@ export const AuthProvider = (props) => {
 		dispatch(fetchProducts());
 	}, []);
 
-	const register = async (email, password) => {};
+	const register = async (email, password, first_name, last_name) => {
+		unset_instance_token();
+		const resp = await axios
+			.post(`${baseURL}/api/auth/register`, {
+				email: email,
+				password: password,
+				last_name: last_name,
+				first_name: first_name,
+			})
+			.then((e) => e.data)
+			.catch((e) => null);
+		if (resp) {
+			await login(email, password);
+		}
+	};
 
 	const logout = async () => {
 		localStorage.clear();

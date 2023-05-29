@@ -5,7 +5,7 @@ import login_image from "../../../assets/log/login-picture.png";
 import { Icon } from "@iconify/react";
 
 const Login = () => {
-	const { needLog, login, setNeedLog } = useContext(AuthContext);
+	const { needLog, login, setNeedLog, register } = useContext(AuthContext);
 	const click_inside = useRef(false);
 	const [logData, setLogData] = useState({
 		is_login: true,
@@ -25,6 +25,13 @@ const Login = () => {
 	const main_log = () => {
 		if (logData.is_login) {
 			login(logData.email, logData.password);
+		} else {
+			register(
+				logData.email,
+				logData.password,
+				logData.first_name,
+				logData.last_name
+			);
 		}
 	};
 
@@ -97,6 +104,12 @@ const Login = () => {
 									<div className="input-label">
 										<label htmlFor="name-input">Nom</label>
 										<input
+											onChange={(e) =>
+												setLogData({
+													...logData,
+													last_name: e.target.value,
+												})
+											}
 											defaultValue={logData.last_name}
 											placeholder="Entrez votre nom"
 											id="name-input"
@@ -108,6 +121,12 @@ const Login = () => {
 											Prénom
 										</label>
 										<input
+											onChange={(e) =>
+												setLogData({
+													...logData,
+													first_name: e.target.value,
+												})
+											}
 											defaultValue={logData.first_name}
 											placeholder="Entrez votre prénom"
 											id="name-input"
